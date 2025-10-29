@@ -1,9 +1,6 @@
-/* ------------------------------------ */
-/* Sección de Planes y Suscripciones */
-/* ------------------------------------ */
 .seccion-planes {
     padding: 80px 5%;
-    background-color: #FFF8E7; /* Fondo Crema */
+    background-color: #FFF8E7; 
     text-align: center;
 }
 
@@ -60,7 +57,7 @@
 .monto {
     font-size: 48px;
     font-weight: bold;
-    color: #FF9E57; /* Naranja */
+    color: #FF9E57; 
 }
 
 .frecuencia {
@@ -94,7 +91,7 @@
 }
 
 .check {
-    color: #B4FFFF; /* Azul Claro para checks en planes no destacados */
+    color: #B4FFFF; 
     margin-right: 10px;
     font-weight: bold;
 }
@@ -104,22 +101,19 @@
 }
 
 
-/* ------------------------------------ */
-/* Estilos para el Plan Destacado (Pro Ilimitado) */
-/* ------------------------------------ */
 .plan-destacado {
-    background-color: #333333; /* Fondo Gris Oscuro */
+    background-color: #333333; 
     color: white;
-    transform: scale(1.08); /* Aún más grande y prominente */
-    border: 3px solid #FF9E57; /* Borde Naranja */
+    transform: scale(1.08); 
+    border: 3px solid #FF9E57; 
     z-index: 10;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* Sombra pesada */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); 
 }
 
 .plan-destacado .monto,
 .plan-destacado .nombre-plan,
 .plan-destacado .check {
-    color: #FF9E57; /* Títulos, precios y checks en Naranja */
+    color: #FF9E57; 
 }
 
 .plan-destacado .frecuencia,
@@ -144,11 +138,6 @@
     text-transform: uppercase;
 }
 
-/* ------------------------------------ */
-/* Botones de Planes */
-/* ------------------------------------ */
-
-/* Botón Primario (Para el plan destacado) */
 .boton-primario {
     width: 100%;
     text-align: center;
@@ -166,7 +155,6 @@
 }
 
 
-/* Botón Terciario (Para planes no destacados - Gratis/Premium) */
 .boton-terciario {
     background-color: white;
     border: 2px solid #333333;
