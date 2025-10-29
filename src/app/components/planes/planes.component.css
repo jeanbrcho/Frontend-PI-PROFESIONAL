@@ -1,0 +1,188 @@
+/* ------------------------------------ */
+/* Sección de Planes y Suscripciones */
+/* ------------------------------------ */
+.seccion-planes {
+    padding: 80px 5%;
+    background-color: #FFF8E7; /* Fondo Crema */
+    text-align: center;
+}
+
+.titulo-seccion-planes {
+    font-size: 36px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.texto-seccion-planes {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 50px;
+}
+
+.contenedor-planes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tarjeta-plan {
+    flex: 1;
+    max-width: 350px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta-plan:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.nombre-plan {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+.precio {
+    margin-bottom: 25px;
+    line-height: 1;
+}
+
+.monto {
+    font-size: 48px;
+    font-weight: bold;
+    color: #FF9E57; /* Naranja */
+}
+
+.frecuencia {
+    font-size: 16px;
+    color: #333333;
+}
+
+.resumen-plan {
+    font-size: 14px;
+    color: #333333;
+    min-height: 40px;
+    margin-bottom: 25px;
+}
+
+.lista-beneficios {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left;
+    width: 100%;
+}
+
+.lista-beneficios li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #f0f0f0;
+    color: #333333;
+}
+
+.lista-beneficios li:last-child {
+    border-bottom: none;
+}
+
+.check {
+    color: #B4FFFF; /* Azul Claro para checks en planes no destacados */
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.beneficio-limitado {
+    opacity: 0.6;
+}
+
+
+/* ------------------------------------ */
+/* Estilos para el Plan Destacado (Pro Ilimitado) */
+/* ------------------------------------ */
+.plan-destacado {
+    background-color: #333333; /* Fondo Gris Oscuro */
+    color: white;
+    transform: scale(1.08); /* Aún más grande y prominente */
+    border: 3px solid #FF9E57; /* Borde Naranja */
+    z-index: 10;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* Sombra pesada */
+}
+
+.plan-destacado .monto,
+.plan-destacado .nombre-plan,
+.plan-destacado .check {
+    color: #FF9E57; /* Títulos, precios y checks en Naranja */
+}
+
+.plan-destacado .frecuencia,
+.plan-destacado .resumen-plan,
+.plan-destacado li {
+    color: white;
+}
+
+.plan-destacado li {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.etiqueta-destacado {
+    position: absolute;
+    top: -15px;
+    background-color: #FF9E57;
+    color: #333333;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* ------------------------------------ */
+/* Botones de Planes */
+/* ------------------------------------ */
+
+/* Botón Primario (Para el plan destacado) */
+.boton-primario {
+    width: 100%;
+    text-align: center;
+    background-color: #FF9E57; 
+    color: #333333;
+    padding: 15px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.boton-primario:hover {
+    background-color: #ffb882;
+}
+
+
+/* Botón Terciario (Para planes no destacados - Gratis/Premium) */
+.boton-terciario {
+    background-color: white;
+    border: 2px solid #333333;
+    color: #333333;
+    padding: 12px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.boton-terciario:hover {
+    background-color: #333333;
+    color: white;
+    border-color: #333333;
+}
