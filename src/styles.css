@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  
+    scroll-behavior: smooth; 
+}
+body {
+  
+  margin: 0; 
+  padding: 0;
+  
+}
+
+html {
+     font-family:  'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
