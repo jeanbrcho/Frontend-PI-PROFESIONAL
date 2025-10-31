@@ -7,15 +7,17 @@
   <nav class="menu">
     <a [routerLink]="['']">Inicio</a>
     <a [routerLink]="['/planes']">Planes</a>
-    <a [routerLink]="['/servicios']">Mis Servicios</a>
+    <a [routerLink]="['/panel']">Mi Panel</a>
   </nav>
 
   
 
 
-    <button class="login-btn" >
-      <span class="paw-icon">🐾</span>
-      Iniciar Sesión
-    </button>
+   
+   <a [routerLink]="['/login']" class="login-btn">
+    <span class="paw-icon">🐾</span>
+    Iniciar Sesión
+</a>
+   
 
 </header>
