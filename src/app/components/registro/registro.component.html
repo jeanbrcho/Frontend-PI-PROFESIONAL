@@ -1,0 +1,229 @@
+<div class="register-page-container">
+
+  <!-- 🧾 FORMULARIO GENERAL -->
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <!-- 🔹 SECCIÓN 1: Información Personal -->
+    <div class="login-container-wrapper section-wrapper vertical">
+      <div class="login-card">
+        <h1 class="login-titulo-principal">Información personal</h1>
+        <p class="login-subtitulo">Completa tus datos personales</p>
+
+        <!-- Nombre y Apellido -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input
+              formControlName="name"
+              class="form-control"
+              (keypress)="onKeyPressLettersOnly($event)"
+              [class.valid]="isValid('name')"
+              [class.invalid]="isInvalid('name')"
+            />
+            <div class="error-message" [class.visible]="isInvalid('name')">
+              <span *ngIf="control('name').errors?.['required']">Nombre es requerido.</span>
+              <span *ngIf="control('name').errors?.['minlength']">Mínimo 2 caracteres.</span>
+              <span *ngIf="control('name').errors?.['maxlength']">Máximo 50 caracteres.</span>
+              <span *ngIf="control('name').errors?.['hasNumber']">No se permiten números.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Apellido</label>
+            <input
+              formControlName="lastname"
+              class="form-control"
+              (keypress)="onKeyPressLettersOnly($event)"
+              [class.valid]="isValid('lastname')"
+              [class.invalid]="isInvalid('lastname')"
+            />
+            <div class="error-message" [class.visible]="isInvalid('lastname')">
+              <span *ngIf="control('lastname').errors?.['required']">Apellido es requerido.</span>
+              <span *ngIf="control('lastname').errors?.['minlength']">Mínimo 2 caracteres.</span>
+              <span *ngIf="control('lastname').errors?.['maxlength']">Máximo 50 caracteres.</span>
+              <span *ngIf="control('lastname').errors?.['hasNumber']">No se permiten números.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DNI y Teléfono -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>DNI</label>
+            <input
+              formControlName="dni"
+              class="form-control"
+              (keypress)="onKeyPressNumbersOnly($event)"
+              [class.valid]="isValid('dni')"
+              [class.invalid]="isInvalid('dni')"
+            />
+            <div class="error-message" [class.visible]="isInvalid('dni')">
+              <span *ngIf="control('dni').errors?.['required']">DNI es requerido.</span>
+              <span *ngIf="control('dni').errors?.['minlength']">Mínimo 7 caracteres.</span>
+              <span *ngIf="control('dni').errors?.['maxlength']">Máximo 10 caracteres.</span>
+              <span *ngIf="control('dni').errors?.['notOnlyNumbers']">Sólo números permitidos.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input
+              formControlName="phone"
+              class="form-control"
+              (keypress)="onKeyPressNumbersOnly($event)"
+              [class.valid]="isValid('phone')"
+              [class.invalid]="isInvalid('phone')"
+            />
+            <div class="error-message" [class.visible]="isInvalid('phone')">
+              <span *ngIf="control('phone').errors?.['required']">Teléfono es requerido.</span>
+              <span *ngIf="control('phone').errors?.['minlength']">Mínimo 10 caracteres.</span>
+              <span *ngIf="control('phone').errors?.['maxlength']">Máximo 15 caracteres.</span>
+              <span *ngIf="control('phone').errors?.['notOnlyNumbers']">Sólo números permitidos.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              formControlName="email"
+              class="form-control"
+              [class.valid]="isValid('email')"
+              [class.invalid]="isInvalid('email')"
+            />
+            <div class="error-message" [class.visible]="isInvalid('email')">
+              <span *ngIf="control('email').errors?.['required']">Email requerido.</span>
+              <span *ngIf="control('email').errors?.['email']">Formato de email inválido.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contraseñas -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input
+              type="password"
+              formControlName="password"
+              class="form-control"
+              [class.valid]="isValid('password')"
+              [class.invalid]="isInvalid('password')"
+            />
+            <div class="error-message" [class.visible]="isInvalid('password')">
+              <span *ngIf="control('password').errors?.['required']">Contraseña requerida.</span>
+              <span *ngIf="control('password').errors?.['minlength']">Mínimo 8 caracteres.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Verificar contraseña</label>
+            <input
+              type="password"
+              formControlName="confirmPassword"
+              class="form-control"
+              [class.valid]="!form.errors?.['passwordsMismatch'] && (control('confirmPassword').dirty || control('confirmPassword').touched)"
+              [class.invalid]="form.errors?.['passwordsMismatch'] && (control('confirmPassword').dirty || control('confirmPassword').touched)"
+            />
+            <div class="error-message"
+              [class.visible]="form.errors?.['passwordsMismatch'] && (control('confirmPassword').dirty || control('confirmPassword').touched)">
+              <span>Las contraseñas no coinciden.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-image-side">
+        <img class="login-image" src="/personal-side.png" alt="imagen personal" />
+        <div class="image-content">
+          <div class="image-title">Datos personales</div>
+          <div class="image-text">Proporciona tu información básica de contacto.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔹 SECCIÓN 2: Información Profesional -->
+    <div class="login-container-wrapper section-wrapper vertical">
+      <div class="login-image-side">
+        <img class="login-image" src="/professional-side.png" alt="imagen profesional" />
+        <div class="image-content">
+          <div class="image-title">Información profesional</div>
+          <div class="image-text">Completa tus datos laborales para mostrar tu perfil profesional.</div>
+        </div>
+      </div>
+
+      <div class="login-card">
+        <h1 class="login-titulo-principal">Información profesional</h1>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Número de matrícula</label>
+            <input formControlName="license" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label>Especialidad</label>
+            <select
+              formControlName="specialty"
+              class="form-control"
+              [class.valid]="isValid('specialty')"
+              [class.invalid]="isInvalid('specialty')"
+            >
+              <option value="">-- Seleccione --</option>
+              <option *ngFor="let s of specialties" [value]="s">{{ s }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre establecimiento</label>
+            <input formControlName="nameEstablishment" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Calle</label>
+            <input formControlName="street" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nº</label>
+            <input formControlName="streetNumber" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Barrio</label>
+            <input formControlName="neighborhood" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Provincia</label>
+            <input formControlName="province" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Código postal</label>
+            <input formControlName="postalCode" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Localidad</label>
+            <input formControlName="location" class="form-control" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔹 BOTÓN FINAL -->
+    <div class="button-container">
+      <button class="boton boton-primario big" type="submit" [disabled]="form.invalid">
+        Registrarse
+      </button>
+    </div>
+
+  </form>
+</div>
