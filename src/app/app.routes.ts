@@ -16,7 +16,7 @@ export const routes: Routes = [
     {path: 'panel', component: PanelComponent, 
         children: [
     
-    { path: '', redirectTo: 'turnos', pathMatch: 'full' }, 
+    { path: '', redirectTo: 'perfil', pathMatch: 'full' }, 
     { path: 'turnos', component: PanelTurnosComponent },
     { path: 'servicios', component: PanelServiciosComponent }, 
     { path: 'perfil', component: PanelPerfilComponent }, 
