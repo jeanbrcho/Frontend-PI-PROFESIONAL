@@ -20,7 +20,7 @@
   flex-direction: row; /* formulario e imagen lado a lado */
   align-items: stretch;
   width: 100%;
-  max-width: 1100px;
+  max-width: 900px;
   border-radius: 12px;
   overflow: hidden;
   background: white;
@@ -157,7 +157,7 @@ label {
 }
 
 /* ================================
-   Botón de registrar (final)
+   Botón de registrar
    ================================ */
 .button-container {
   display: flex;
