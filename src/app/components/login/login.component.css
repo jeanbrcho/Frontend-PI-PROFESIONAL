@@ -1,0 +1,175 @@
+.login-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #FFF8E7; 
+    padding: 30px;
+}
+
+
+.login-container-wrapper {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+    background-color: white;
+}
+
+
+.login-card {
+    flex: 1; 
+    padding: 50px 40px;
+    background-color: white;
+}
+
+.login-titulo-principal {
+    font-size: 32px;
+    color: #333333; 
+    margin-bottom: 5px;
+}
+
+.login-subtitulo {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #FF9E57; 
+    box-shadow: 0 0 0 3px rgba(255, 158, 87, 0.2); 
+    outline: none;
+}
+
+
+
+.boton {
+    /* Estilos base */
+    padding: 15px 30px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+    width: 100%; 
+    margin-top: 10px;
+}
+
+.boton-primario {
+    background-color: #FF9E57;
+    color: #333333; 
+}
+
+.boton-primario:hover {
+    background-color: #ffb882;
+}
+
+.boton-primario:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+
+
+
+
+.register-link {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+}
+
+.link-registro-cta {
+    color: #FF9E57;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.link-registro-cta:hover {
+    text-decoration: underline;
+}
+
+
+
+.login-image-side {
+    flex: 1.2; 
+    position: relative;
+    background-color: #515151; 
+}
+
+.login-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(80%); 
+}
+
+
+.image-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    z-index: 10;
+    color: white;
+    background: rgba(51, 51, 51, 0.2); 
+}
+
+.image-title {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.image-text {
+    font-size: 18px;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+/* Responsive para dispositivos pequeños */
+@media (max-width: 768px) {
+    .login-container-wrapper {
+        flex-direction: column;
+        max-width: 450px;
+    }
+    .login-image-side {
+       
+        display: none; 
+    }
+}
