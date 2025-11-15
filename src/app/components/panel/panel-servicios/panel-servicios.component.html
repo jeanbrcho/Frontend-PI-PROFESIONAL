@@ -1,0 +1,76 @@
+<div class="panel-content-card">
+    <h2>🛠️ Edición de Información Pública</h2>
+    <p>Actualiza la información (servicios, horarios, fotos y descripción) que los clientes ven de tu negocio.</p>
+    
+    <form class="public-edit-form">
+
+        <div class="form-section">
+            <h3>1. Información de la Tarjeta</h3>
+            <div class="form-group">
+                <label for="nameEstablishment">Nombre del Establecimiento:</label>
+                <input type="text" id="nameEstablishment" value="Vet & Style">
+            </div>
+            <div class="form-group">
+                <label for="specialty">Especialidad (Se ve en la Tarjeta):</label>
+                <input type="text" id="specialty" value="veterinario y peluqueria" placeholder="Ej: Peluquería Canina, Veterinaria, etc.">
+            </div>
+            <div class="form-group">
+                <label for="biography">Biografía / Descripción Pública:</label>
+                <textarea id="biography" rows="4" placeholder="Ej: Especialistas en cortes para Pomerania y Veterinaria de Emergencia.">Profesional con más de 10 años de experiencia en el cuidado integral de mascotas.</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Imágenes de tu Establecimiento:</label>
+                <p>Imagen actual: <span>https://example.com/images/maria-gomez.jpg</span></p>
+                <input type="file" multiple>
+                <small class="form-text text-muted">Sube hasta 3 fotos (máximo 5MB cada una). La primera será la principal.</small>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="form-section">
+            <h3>2. Dirección de Atención</h3>
+            <div class="form-grid-2-col">
+                <div class="form-group"><label for="street">Calle:</label><input type="text" id="street" value="Avenida Siempre Viva"></div>
+                <div class="form-group"><label for="streetNumber">Número:</label><input type="text" id="streetNumber" value="742"></div>
+                <div class="form-group"><label for="neighborhood">Barrio:</label><input type="text" id="neighborhood" value="Belgrano"></div>
+                <div class="form-group"><label for="location">Localidad (Ciudad):</label><input type="text" id="location" value="CABA"></div>
+                <div class="form-group"><label for="province">Provincia:</label><input type="text" id="province" value="Buenos Aires"></div>
+                <div class="form-group"><label for="postalCode">Código Postal:</label><input type="text" id="postalCode" value="1426"></div>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="form-section">
+            <h3>3. Horarios de Atención</h3>
+            <div class="horarios-grid">
+                <div class="horario-item">
+                    <label>Lunes:</label>
+                    <input type="time" value="09:00"> a <input type="time" value="18:00">
+                    <button type="button" class="btn-cerrado">Cerrado</button>
+                </div>
+                </div>
+        </div>
+        
+        <hr>
+
+        <div class="form-section">
+            <h3>4. Servicios y Precios</h3>
+            <p>Define el nombre del servicio, su duración (en minutos) y el precio. Esto se usa para reservar turnos.</p>
+            <div class="service-list">
+                <div class="service-item">
+                    <input type="text" placeholder="Nombre del Servicio (Ej: Baño y Corte)">
+                    <input type="number" placeholder="Duración (min)">
+                    <input type="number" placeholder="Precio ($)">
+                    <button type="button" class="btn-eliminar">X</button>
+                </div>
+            </div>
+            <button type="button" class="btn-agregar-servicio">➕ Agregar Nuevo Servicio</button>
+        </div>
+        
+        <button type="submit" class="btn-guardar-principal">Guardar Toda la Información Pública</button>
+
+    </form>
+</div>
