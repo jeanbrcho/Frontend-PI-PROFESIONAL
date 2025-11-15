@@ -21,8 +21,8 @@
             </div>
 
              <div class="form-group">
-                <label for="email">Email (Identificador de la Cuenta):</label>
-                <input type="email" id="email" value="maria.gomezetstyle.com" [disabled]="!isEditing"> 
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="profesionalData.email" [disabled]="!isEditing"> 
             </div>
         </div>
 
@@ -91,7 +91,7 @@
             </div>
             <div class="display-group">
                 <span class="label">Email de la Cuenta:</span>
-                <span class="value">maria.gomez@vetstyle.com</span>
+               <span class="value">{{ profesionalData.email }}</span>
             </div>
 
         </div>

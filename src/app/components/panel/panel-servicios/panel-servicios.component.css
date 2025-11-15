@@ -1,42 +1,43 @@
-/* ------------------------------------- */
-/* ESTILOS DE LA TARJETA DE PERFIL Y FORMULARIO (Heredados del Perfil Básico) */
-/* ------------------------------------- */
+
 .panel-content-card {
-    /* Mismos estilos de fondo, borde y sombra que la tarjeta de Perfil Básico */
-    background-color: #ffffff; 
+    background-color: #ffffff;
     padding: 40px;
     border-radius: 8px;
     border: 1px solid #e9ecef;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
 .panel-content-card h2 {
     color: #333;
     font-size: 1.8rem;
-    border-bottom: 3px solid #ff9933; /* Acento de marca */
+    border-bottom: 3px solid #ff9933; 
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
-/* Subtítulos */
-.public-edit-form h3 {
+
+.form-section h3 {
     color: #555;
     font-size: 1.3rem;
-    margin-top: 35px;
+    margin-top: 30px;
     margin-bottom: 15px;
-    padding-bottom: 5px;
 }
 
-/* Estilos de Inputs y Labels (Iguales al Perfil Básico) */
-.form-group label {
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label:not(.checkbox-label) {
     display: block;
     font-weight: 600;
     color: #495057;
     margin-bottom: 5px;
 }
-.public-edit-form input[type="text"],
-.public-edit-form input[type="number"],
-.public-edit-form input[type="email"],
-.public-edit-form textarea {
+
+.servicios-form input[type="text"],
+.servicios-form input[type="number"],
+.servicios-form textarea {
     width: 100%;
     padding: 10px 15px;
     border: 1px solid #ced4da;
@@ -45,102 +46,109 @@
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* ------------------------------------- */
-/* Layout de Grilla para Dirección (2 Columnas) */
-/* ------------------------------------- */
-.form-grid-2-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px 30px;
+
+.checkbox-label {
+    margin-left: 10px;
+    font-weight: normal;
 }
 
 
-/* ------------------------------------- */
-/* Horarios Grid */
-/* ------------------------------------- */
-.horarios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+.display-data {
     margin-top: 20px;
-}
-.horario-item {
-    padding: 15px;
-    border: 1px solid #e9ecef;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.horario-item label {
-    font-weight: 600;
-    width: 60px;
-}
-.horario-item input[type="time"] {
-    flex-grow: 1;
-    padding: 8px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-}
-.btn-cerrado {
-    background-color: #dc3545; 
-    color: white;
-    border: none;
-    padding: 8px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* ------------------------------------- */
-/* Lista de Servicios */
-/* ------------------------------------- */
-.service-list {
-    margin-bottom: 20px;
-}
-.service-item {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 10px;
     padding: 10px 0;
-    border-bottom: 1px dashed #e9ecef;
-}
-.service-item input:nth-child(1) { flex: 3; } 
-.service-item input:nth-child(2) { flex: 1; } 
-.service-item input:nth-child(3) { flex: 1; } 
-
-.btn-eliminar {
-    background: none;
-    color: #dc3545;
-    border: 1px solid #dc3545;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-weight: bold;
-    cursor: pointer;
+    padding-left: 20px; 
 }
 
-.btn-agregar-servicio {
-    background-color: #28a745; /* Verde para agregar */
-    color: white;
-    border: none;
-    padding: 10px 15px;
+.display-group {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0; 
+    align-items: flex-start; 
+}
+
+.display-group:last-child {
+    border-bottom: none;
+}
+
+.display-group .label {
+    font-weight: 600;
+    color: #495057; 
+    width: 200px; 
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.display-group .value {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    flex-grow: 1; 
+}
+
+
+.status-success {
+    color: #28a745; 
+    font-weight: 700;
+}
+.status-fail {
+    color: #dc3545; 
+    font-weight: 700;
+}
+
+
+.action-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start; 
+}
+
+
+.btn-editar {
+    background-color: #f8f8f8; 
+    color: #ff9933; 
+    border: 1px solid #ff9933;
+    padding: 12px 25px;
     border-radius: 6px;
-    margin-top: 15px;
+    font-weight: 700;
     cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(255, 153, 51, 0.2); 
 }
 
-/* Botón de Guardar Principal (Naranja de Marca) */
-.btn-guardar-principal {
-    display: block;
-    width: 300px;
-    padding: 15px;
-    margin: 40px auto 10px auto;
+.btn-editar:hover {
+    background-color: #ff9933; 
+    color: white;
+}
+
+.btn-guardar {
     background-color: #ff9933; 
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-guardar:hover {
+    background-color: #e68a2e; 
+}
+
+.btn-cancelar {
+    background-color: white; 
+    color: #dc3545; 
+    border: 1px solid #dc3545;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancelar:hover {
+    background-color: #dc3545;
+    color: white;
 }
