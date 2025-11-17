@@ -1,0 +1,83 @@
+<div class="panel-content-card">
+    <h2>🐶 Servicios y Disponibilidad</h2>
+    <p>Gestiona tu información pública, horarios de atención y lista de servicios.</p>
+    
+    <form class="servicios-form" *ngIf="isEditing" (ngSubmit)="guardarCambios()">
+        
+        <div class="form-section">
+            <h3>Información Pública</h3>
+            <div class="form-group">
+                <label for="especialidad">Especialidad Principal:</label>
+                <input type="text" id="especialidad" [(ngModel)]="serviciosData.especialidad" name="especialidad" [disabled]="!isEditing">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción de Servicios (Público):</label>
+                <textarea id="descripcion" [(ngModel)]="serviciosData.descripcion" name="descripcion" [disabled]="!isEditing"></textarea>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="form-section">
+            <h3>Disponibilidad y Tarifas</h3>
+            <div class="form-group">
+                <label for="precioBase">Precio Base (Referencia):</label>
+                <input type="number" id="precioBase" [(ngModel)]="serviciosData.precioBase" name="precioBase" [disabled]="!isEditing">
+            </div>
+            
+            <div class="form-group">
+                <label>Atención a Domicilio:</label>
+                <input type="checkbox" id="domicilio" [(ngModel)]="serviciosData.domicilio" name="domicilio" [disabled]="!isEditing">
+                <label for="domicilio" class="checkbox-label">{{ serviciosData.domicilio ? 'Sí, ofrezco domicilio' : 'No, solo en local' }}</label>
+            </div>
+        </div>
+        
+        <hr>
+
+        <div class="action-buttons">
+            <button type="submit" class="btn-guardar">
+                Guardar Cambios
+            </button>
+            <button type="button" (click)="toggleEditMode()" class="btn-cancelar">
+                Cancelar
+            </button>
+        </div>
+        
+    </form>
+    
+    <ng-container *ngIf="!isEditing">
+        <div class="display-data">
+            
+            <div class="display-group">
+                <span class="label">Especialidad:</span>
+                <span class="value">{{ serviciosData.especialidad }}</span>
+            </div>
+            <div class="display-group">
+                <span class="label">Descripción:</span>
+                <span class="value">{{ serviciosData.descripcion }}</span>
+            </div>
+            <div class="display-group">
+                <span class="label">Tarifa Base Estimada:</span>
+                <span class="value">${{ serviciosData.precioBase }} ARS</span>
+            </div>
+            <div class="display-group">
+                <span class="label">Atención a Domicilio:</span>
+                <span class="value">
+                    <span [ngClass]="{'status-success': serviciosData.domicilio, 'status-fail': !serviciosData.domicilio}">
+                        {{ serviciosData.domicilio ? '✅ Sí' : '❌ No' }}
+                    </span>
+                </span>
+            </div>
+
+        </div>
+        
+        <hr>
+
+        <div class="action-buttons">
+            <button type="button" (click)="toggleEditMode()" class="btn-editar">
+                ✏️ Editar Servicios
+            </button>
+        </div>
+    </ng-container>
+
+</div>

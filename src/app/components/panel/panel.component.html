@@ -1,23 +1,34 @@
-<div class="panel-container">
-    <div class="panel-card">
-        <!-- CAMBIAR ESTO CUANDO TENGAMOS UN PANEL POSTA -->
-        <h1 class="panel-titulo">Mi Panel Profesional</h1>
-        <h2 class="panel-subtitulo">
-            Bienvenidos al área de gestión de turnos y clientes.
-        </h2>
-        
-        <div class="proximamente-bloque">
-            <span class="proximamente-icono">🚧</span>
-            <p class="proximamente-texto">
-                Estamos trabajando para integrar todas las herramientas.
-                <br>
-                **¡Este panel estará disponible muy pronto!**
-            </p>
-        </div>
 
-        <button class="boton-volver" [routerLink]="['/']">
-            Volver a la página principal
-        </button>
+<div class="panel-dashboard-wrapper">
+    
+    <aside class="panel-sidebar">
         
-    </div>
+        <nav class="sidebar-nav">
+            <ul>
+
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['perfil']">Perfil Básico</a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['turnos']">Mis Turnos</a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a [routerLink]="['servicios']">Editar Servicios</a>
+                </li>
+                
+                
+                <li class="separator"></li> 
+
+                <li class="logout-item">
+                    <a (click)="onLogoutClick()">Cerrar Sesión</a> 
+                </li>
+            </ul>
+        </nav>
+        
+    </aside>
+
+    <main class="panel-content">
+        <router-outlet></router-outlet>
+    </main>
+    
 </div>

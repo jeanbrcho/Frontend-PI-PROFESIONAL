@@ -1,0 +1,55 @@
+<div class="panel-content-card">
+    <h2>📅 Próximos Turnos Agendados</h2>
+    <p>Revisa y gestiona los turnos confirmados por tus clientes. Puedes cancelar un turno si es necesario.</p>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Día y Hora</th>
+                    <th>Servicio</th>
+                    <th>Cliente / Mascota</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let turno of turnos">
+                    <td>
+                        <div class="date-time-cell">
+                            <span class="date">{{ turno.fecha | date:'EEE d MMM' }}</span>
+                            <span class="time">{{ turno.fecha | date:'HH:mm' }} hs</span>
+                        </div>
+                    </td>
+                    <td>{{ turno.servicio }}</td>
+                    <td>
+                        <strong>{{ turno.cliente }}</strong>
+                        <br>
+                        <small>{{ turno.mascota }}</small>
+                    </td>
+                    <td>{{ turno.telefono }}</td>
+                    <td>
+                        <span class="status-badge" [ngClass]="getEstadoClass(turno.estado)">
+                            {{ turno.estado }}
+                        </span>
+                    </td>
+                    <td>
+                        <button 
+                            *ngIf="turno.estado !== 'Cancelado'"
+                            (click)="cancelarTurno(turno.id)"
+                            class="btn-action btn-cancelar-turno"
+                        >
+                            Cancelar
+                        </button>
+                        <span *ngIf="turno.estado === 'Cancelado'">Turno Cancelado</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div *ngIf="turnos.length === 0" class="no-data">
+            <p>🎉 No tienes turnos agendados por el momento.</p>
+        </div>
+    </div>
+</div>
