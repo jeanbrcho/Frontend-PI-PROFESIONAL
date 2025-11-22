@@ -1,34 +1,30 @@
-/* ------------------------------------- */
-/* ESTILOS DE LA TARJETA DE PERFIL Y FORMULARIO */
-/* ------------------------------------- */
+
 .panel-content-card {
-    background-color: #ffffff; /* Fondo blanco para limpieza */
+    background-color: var(--color-fondo-principal); 
     padding: 40px;
     border-radius: 8px;
-    border: 1px solid #e9ecef; /* Borde muy sutil */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra sutil y profesional */
+    border: 1px solid var(--color-borde); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
 }
 
-/* Título de la Sección */
+
 .panel-content-card h2 {
-    color: #333;
+    color: var(--color-texto-principal);
     font-size: 1.8rem;
-    border-bottom: 3px solid #ff9933; /* 🔑 Acento de tu naranja de marca */
+    border-bottom: 3px solid #ff9933; 
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
-/* Subtítulos de las Secciones del Formulario */
+
 .perfil-form h3 {
-    color: #555;
+    color: var(--color-texto-principal);
     font-size: 1.3rem;
     margin-top: 30px;
     margin-bottom: 15px;
 }
 
-/* ------------------------------------- */
-/* ESTILOS DE ENTRADA (INPUTS) */
-/* ------------------------------------- */
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -36,7 +32,7 @@
 .form-group label {
     display: block;
     font-weight: 600;
-    color: #495057; /* Gris oscuro, profesional */
+    color: var(--color-texto-principal);
     margin-bottom: 5px;
 }
 
@@ -45,35 +41,33 @@
 .perfil-form input[type="password"] {
     width: 100%;
     padding: 10px 15px;
-    border: 1px solid #ced4da; /* Borde gris suave */
+    border: 1px solid #ced4da; 
     border-radius: 6px;
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Foco en el input para profesionalismo */
+
 .perfil-form input:focus {
-    border-color: #ff9933; /* Borde naranja al hacer foco */
-    box-shadow: 0 0 0 0.2rem rgba(255, 153, 51, 0.25); /* Sombra suave naranja */
+    border-color: #ff9933;
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 51, 0.25); 
     outline: none;
 }
 
 /* Input Deshabilitado (para el email no editable) */
 .perfil-form input:disabled {
-    background-color: #f8f9fa; /* Fondo gris claro */
-    color: #6c757d;
+    background-color: #f8f9fa; 
+    color: var(--color-texto-secundario);
 }
 
-/* ------------------------------------- */
-/* ESTILOS DEL BOTÓN (ACENTO DE MARCA) */
-/* ------------------------------------- */
+
 .btn-guardar {
     display: block;
     width: 200px;
     padding: 12px 20px;
     margin-top: 30px;
     
-    /* 🔑 CLAVE: Usar el Naranja de Marca */
+   
     background-color: #ff9933; 
     color: white;
     
@@ -86,10 +80,10 @@
 }
 
 .btn-guardar:hover {
-    background-color: #e68a2e; /* Naranja ligeramente más oscuro al pasar el mouse */
+    background-color: #e68a2e; 
 }
 
-/* Estilo para el contenedor de botones */
+
 .action-buttons {
     margin-top: 30px;
     display: flex;
@@ -97,7 +91,7 @@
     justify-content: flex-start; 
 }
 
-/* 1. Botón de Editar (Naranja suave o Acuario oscuro) */
+
 .btn-editar {
     background-color: #f8f8f8; 
     color: #ff9933; /* Texto naranja */
@@ -110,7 +104,7 @@
 }
 
 .btn-editar:hover {
-    background-color: #ff9933; /* Invertir color */
+    background-color: #ff9933; 
     color: white;
 }
 
@@ -122,36 +116,36 @@
 .display-data {
     margin-top: 20px;
     padding: 10px 0;
-    /* Para que el texto no esté pegado al borde de la tarjeta */
+   
     padding-left: 20px; 
 }
 
 .display-group {
-    /* CLAVE: Usar flex para alinear la etiqueta y el valor */
+   
     display: flex;
     padding: 12px 0;
-    border-bottom: 1px solid #e9ecef; /* Separador sutil */
+    border-bottom: 1px solid var(--color-borde); 
     align-items: center;
 }
 
 .display-group:last-child {
-    border-bottom: none; /* Quitar borde del último elemento */
+    border-bottom: none; 
 }
 
 .display-group .label {
     font-weight: 600;
-    color: #495057; /* Gris oscuro para las etiquetas */
-    /* Dar un ancho fijo a la etiqueta para que los valores se alineen */
+    color: var(--color-texto-principal);
+   
     width: 200px; 
     flex-shrink: 0;
     margin-right: 20px;
 }
 
 .display-group .value {
-    color: #333;
+    color: var(--color-texto-principal);
     font-size: 1rem;
     font-weight: 500;
-    /* Asegurar que el valor ocupe el espacio restante */
+   
     flex-grow: 1; 
 }
 
@@ -162,14 +156,14 @@
 
 .btn-editar {
     background-color: #f8f8f8; 
-    color: #ff9933; /* 🔑 Naranja de tu marca */
+    color: #ff9933; 
     border: 1px solid #ff9933;
     padding: 12px 25px;
     border-radius: 6px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
-    /* Para que se vea como un botón de acción */
+  
     box-shadow: 0 2px 4px rgba(255, 153, 51, 0.2); 
 }
 
@@ -180,7 +174,7 @@
 /* --- ESTILOS DEL BOTÓN CANCELAR --- */
 
 .btn-cancelar {
-    /* Fondo blanco y borde/texto de color de contraste (rojo) */
+    
     background-color: rgb(149, 149, 230); 
     color: #f3dcdf; 
     border: 1px solid #dc3545; /* Borde rojo */

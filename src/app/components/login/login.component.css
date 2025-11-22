@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #FFF8E7; 
+    background-color: var(--color-fondo-pagina); 
     padding: 30px;
 }
 
@@ -22,18 +22,18 @@
 .login-card {
     flex: 1; 
     padding: 50px 40px;
-    background-color: white;
+    background-color: var(--color-fondo-principal);
 }
 
 .login-titulo-principal {
     font-size: 32px;
-    color: #333333; 
+    color: var(--color-texto-principal); 
     margin-bottom: 5px;
 }
 
 .login-subtitulo {
     font-size: 16px;
-    color: #555;
+    color: var(--color-texto-principal);
     margin-bottom: 30px;
 }
 
@@ -46,7 +46,7 @@
 label {
     display: block;
     font-weight: 600;
-    color: #333333;
+    color: var(--color-texto-principal);
     margin-bottom: 8px;
 }
 
@@ -60,7 +60,7 @@ label {
 }
 
 .form-control:focus {
-    border-color: #FF9E57; 
+    border-color:var( --color-acento-marca); 
     box-shadow: 0 0 0 3px rgba(255, 158, 87, 0.2); 
     outline: none;
 }
@@ -81,12 +81,12 @@ label {
 }
 
 .boton-primario {
-    background-color: #FF9E57;
-    color: #333333; 
+    background-color:var( --color-acento-marca);
+    color: #2D3748; 
 }
 
 .boton-primario:hover {
-    background-color: #ffb882;
+    background-color: var( --color-acento-hover);
 }
 
 .boton-primario:disabled {
@@ -95,19 +95,15 @@ label {
 }
 
 
-
-
-
-
 .register-link {
     margin-top: 30px;
     text-align: center;
     font-size: 16px;
-    color: #555;
+    color: var(--color-texto-principal);
 }
 
 .link-registro-cta {
-    color: #FF9E57;
+    color:var( --color-acento-marca);
     font-weight: bold;
     text-decoration: none;
 }

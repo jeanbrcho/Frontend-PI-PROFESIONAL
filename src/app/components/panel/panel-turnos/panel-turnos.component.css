@@ -1,13 +1,13 @@
 .panel-content-card {
-    background-color: #ffffff;
+    background-color: var(--color-fondo-principal);
     padding: 40px;
     border-radius: 8px;
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--color-borde);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .panel-content-card h2 {
-    color: #333;
+    color: var(--color-texto-principal);;
     font-size: 1.8rem;
     border-bottom: 3px solid #ff9933; 
     padding-bottom: 10px;
@@ -30,11 +30,11 @@ table {
 
 thead th {
     background-color: #f8f9fa;
-    color: #495057;
+    color: #333333;
     font-weight: 700;
     text-align: left;
     padding: 15px 15px;
-    border-bottom: 2px solid #e9ecef;
+    border-bottom: 2px solid var(--color-borde);
 }
 
 tbody tr {
@@ -43,13 +43,13 @@ tbody tr {
 }
 
 tbody tr:hover {
-    background-color: #fefefe;
+    background-color: #797573;
 }
 
 tbody td {
     padding: 15px 15px;
     vertical-align: middle;
-    color: #333;
+    color: var(--color-texto-principal);
 }
 
 
@@ -59,7 +59,7 @@ tbody td {
 }
 .date-time-cell .date {
     font-weight: 600;
-    color: #555;
+    color: var(--color-texto-principal);
 }
 .date-time-cell .time {
     font-size: 1.1rem;

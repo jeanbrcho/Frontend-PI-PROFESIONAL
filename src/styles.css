@@ -21,3 +21,54 @@ body {
 html {
      font-family:  'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+
+/* ==================================== */
+/* TEMA CLARO  */
+/* ==================================== */
+:root {
+    /* Fondos */
+    --color-fondo-pagina: #FFF8E7;    
+    --color-fondo-principal: #ffffff;  
+    --color-fondo-secundario: #FBF7EC; 
+    --color-fondo-navbar: #455A64;    
+
+    /* Textos */
+    --color-texto-principal: #333333; 
+    --color-texto-claro: #FFFFFF;     
+    --color-texto-secundario: #6c757d; 
+    /* Acentos y Bordes */
+    --color-acento-marca: #FF9E57;     
+    --color-acento-hover: #ffb882;     
+    --color-borde: #e9ecef;           
+    --color-acento-texto: #B4FFFF;      
+}
+
+
+/* ==================================== */
+/* TEMA OSCURO . ACA HAY QUE CAMBIAR LOS COLORES SI SE NECESITA */
+/* ==================================== */
+body.dark-theme {
+   
+    --color-fondo-pagina: #1A202C;      
+    --color-fondo-principal: #2D3748;  
+    --color-fondo-secundario: #4A5568;  
+    --color-fondo-navbar: #1A202C;     
+
+    --color-texto-principal: #E2E8F0;  
+    --color-texto-claro: #1A202C;       
+    --color-texto-secundario: #A0AEC0;  
+    
+   
+    --color-acento-marca: #FFBF69;     
+    --color-acento-hover: #fa8704;     
+    --color-borde: #4A5568;            
+    --color-acento-texto: #191b1b;
+}
+
+
+body {
+    transition: background-color 0.4s, color 0.4s;
+    background-color: var(--color-fondo-pagina);
+    color: var(--color-texto-principal);
+}
