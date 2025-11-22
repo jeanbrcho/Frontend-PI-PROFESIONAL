@@ -22,4 +22,6 @@ export class Header {
     onWindowScroll() {
         this.isFixed = window.scrollY > 150; // cambiar valor según altura del logo
     }
+
+   
 }

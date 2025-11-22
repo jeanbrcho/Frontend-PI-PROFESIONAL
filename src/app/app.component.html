@@ -1,8 +1,40 @@
-<app-header></app-header>
+<!--<app-header></app-header>
 
 
 <router-outlet></router-outlet>
 
 
 
-<app-footer></app-footer>
+<app-footer></app-footer> !-->
+
+<div class="layout-wrapper"> 
+
+   
+
+  <app-header></app-header> 
+
+<button 
+    class="dark-mode-btn-flotante" 
+    [class.is-dark-on]="isDarkMode"  
+    (click)="toggleDarkMode()">
+    
+    <span *ngIf="!isDarkMode">🌙 Modo Oscuro</span>
+    <span *ngIf="isDarkMode">☀️ Modo Claro</span>
+
+    </button>
+
+    <button 
+    class="dark-mode-btn-flotante" 
+    [class.is-dark-on]="isDarkMode"  
+    (click)="toggleDarkMode()">
+    
+    <i *ngIf="!isDarkMode" class="fas fa-moon"></i>
+    
+    <i *ngIf="isDarkMode" class="fas fa-sun"></i>
+</button>
+
+    <router-outlet></router-outlet> 
+
+    <app-footer></app-footer>
+
+</div>
