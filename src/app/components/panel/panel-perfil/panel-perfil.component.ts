@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-panel-perfil',
@@ -13,21 +14,48 @@ import { CommonModule } from '@angular/common';
 
 export class PanelPerfilComponent {
   // 🔑 CLAVE: Variable para controlar el estado
-  isEditing: boolean = false; 
+  isEditing: boolean = false;
+  // Datos del profesional, cargados desde login/localStorage
 
-  // Variables para almacenar los datos (que luego cargarías del servicio)
   profesionalData = {
-    name: 'María',
-    lastname: 'Gómez',
-    dni: '38999888',
-    license: 'LIC-12345',
-    phone: '+54 9 11 5555-2222',
-    email: 'maria.gomez@vetstyle.com'
+    name: '',
+    lastname: '',
+    dni: '',
+    license: '',
+    phone: '',
+    email: ''
   };
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void {
+    const profString = localStorage.getItem('user_profile');
+    console.log('Perfil desde localStorage:', profString); // <- ver qué llega
+    if (profString) {
+      try {
+        this.profesionalData = JSON.parse(profString);
+      } catch (e) {
+        console.error('Error parseando el perfil guardado:', e);
+        // Inicializamos con valores vacíos para evitar errores en la UI
+        this.profesionalData = {
+          name: '',
+          lastname: '',
+          dni: '',
+          license: '',
+          phone: '',
+          email: ''
+        };
+      }
+    }
+  }
 
   toggleEditMode(): void {
     this.isEditing = !this.isEditing;
+  }
+
+  guardarCambios(): void {
+    localStorage.setItem('user_profile', JSON.stringify(this.profesionalData));
+    this.toggleEditMode();
+    alert('Cambios guardados localmente.');
   }
 }
