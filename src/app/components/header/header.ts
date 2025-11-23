@@ -23,5 +23,7 @@ export class Header {
         this.isFixed = window.scrollY > 150; // cambiar valor según altura del logo
     }
 
-   
+    logout() {
+        this.authService.logout();
+    }
 }
