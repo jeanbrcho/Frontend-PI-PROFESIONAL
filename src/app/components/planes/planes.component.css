@@ -1,18 +1,18 @@
 .seccion-planes {
     padding: 80px 5%;
-    background-color: #FFF8E7; 
+    background-color: var(--color-fondo-pagina); 
     text-align: center;
 }
 
 .titulo-seccion-planes {
     font-size: 36px;
-    color: #333333;
+    color: var(----color-texto-principal);
     margin-bottom: 10px;
 }
 
 .texto-seccion-planes {
     font-size: 18px;
-    color: #333333;
+    color: var(--color-texto-principal);
     margin-bottom: 50px;
 }
 
@@ -57,7 +57,7 @@
 .monto {
     font-size: 48px;
     font-weight: bold;
-    color: #FF9E57; 
+    color:var( --color-acento-marca); 
 }
 
 .frecuencia {
@@ -113,7 +113,7 @@
 .plan-destacado .monto,
 .plan-destacado .nombre-plan,
 .plan-destacado .check {
-    color: #FF9E57; 
+    color:#FF9E57; 
 }
 
 .plan-destacado .frecuencia,
@@ -129,7 +129,7 @@
 .etiqueta-destacado {
     position: absolute;
     top: -15px;
-    background-color: #FF9E57;
+    background-color:#FF9E57;
     color: #333333;
     padding: 5px 15px;
     border-radius: 50px;
@@ -141,8 +141,8 @@
 .boton-primario {
     width: 100%;
     text-align: center;
-    background-color: #FF9E57; 
-    color: #333333;
+    background-color:#FF9E57; 
+    color: #ffffff;
     padding: 15px 30px;
     border-radius: 4px;
     font-weight: bold;
@@ -170,7 +170,7 @@
 }
 
 .boton-terciario:hover {
-    background-color: #333333;
+    background-color:#333333;
     color: white;
     border-color: #333333;
 }

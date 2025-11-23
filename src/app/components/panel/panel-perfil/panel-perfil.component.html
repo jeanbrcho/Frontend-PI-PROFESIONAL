@@ -1,0 +1,50 @@
+<div class="panel-content-card">
+  <h2>👤 Mi Perfil</h2>
+
+  <form *ngIf="isEditing" class="perfil-form">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" [(ngModel)]="profesionalData.name" [disabled]="!isEditing">
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Apellido:</label>
+      <input type="text" id="lastname" [(ngModel)]="profesionalData.lastname" [disabled]="!isEditing">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="profesionalData.email" [disabled]="!isEditing">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Teléfono:</label>
+      <input type="text" id="phone" [(ngModel)]="profesionalData.phone" [disabled]="!isEditing">
+    </div>
+
+    <div class="form-group">
+      <label for="dni">DNI:</label>
+      <input type="text" id="dni" [(ngModel)]="profesionalData.dni" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="license">Licencia:</label>
+      <input type="text" id="license" [(ngModel)]="profesionalData.license" disabled>
+    </div>
+
+    <div class="action-buttons">
+      <button type="button" class="btn-guardar" (click)="guardarCambios()">Guardar Cambios</button>
+      <button type="button" class="btn-cancelar" (click)="toggleEditMode()">Cancelar</button>
+    </div>
+  </form>
+
+  <div *ngIf="!isEditing" class="display-data">
+    <p><strong>Nombre:</strong> {{ profesionalData.name }} {{ profesionalData.lastname }}</p>
+    <p><strong>Email:</strong> {{ profesionalData.email }}</p>
+    <p><strong>Teléfono:</strong> {{ profesionalData.phone }}</p>
+    <p><strong>DNI:</strong> {{ profesionalData.dni }}</p>
+    <p><strong>Licencia:</strong> {{ profesionalData.license }}</p>
+
+    <button type="button" class="btn-editar" (click)="toggleEditMode()">✏️ Editar Perfil</button>
+  </div>
+</div>

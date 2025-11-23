@@ -6,12 +6,12 @@
 
 body {
   font-family: sans-serif;
-  background-color: #FFF8E7;
-  color: #333333;
+  background-color: var(--color-fondo-pagina);
+  color: var(--color-texto-principal);
 }
 
 .destacado {
-    color: #FF9E57;
+    color:var(--color-acento-marca);
 }
 
 
@@ -48,13 +48,14 @@ body {
   position: relative;
   z-index: 2;
   max-width: 800px;
-  color: white;
+  
 }
 
 .titulo-principal {
     font-size: 56px;
     line-height: 1.1;
     margin-bottom: 20px;
+    color: #FFF8E7;
 }
 
 .texto-principal {
@@ -76,20 +77,20 @@ body {
 }
 
 .boton-primario {
-    background-color: #FF9E57; 
-    color: #333333; 
-    border: 2px solid #FF9E57;
+    background-color:var(--color-acento-marca); 
+    color: var(--color-texto-principal); 
+    border: 2px solidvar(--color-acento-marca);
 }
 
 .boton-primario:hover {
-    background-color: #ffb882;
-    border-color: #ffb882;
+    background-color: var(--color-acento-hover);
+    border-color: var(--color-acento-hover);
 }
 
 .boton-secundario {
     background-color: transparent;
-    color: white;
-    border: 2px solid white;
+    color: var(--color-fondo-principal);
+    border: 2px solid var(--color-fondo-principal);
 }
 
 .boton-secundario:hover {
@@ -105,7 +106,7 @@ body {
      
     height: 100vh; 
     padding: 0 5%;
-    background-color: #FFF8E7;  
+    background-color: var(--color-fondo-pagina);  
 }
 
 .tarjeta-servicio {
@@ -114,7 +115,7 @@ body {
     min-height: 250px;  
     flex: 1;
     
-    background-color: white; 
+    background-color: var(--color-fondo-principal); 
     padding: 40px;  
     border-radius: 12px;  
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);  
@@ -134,14 +135,14 @@ body {
 }
 
 .titulo-tarjeta {
-    color: #FF9E57; 
+    color:var(--color-acento-marca); 
     font-size: 28px;  
     font-weight: 700;
     margin-bottom: 20px;  
 }
 
 .texto-tarjeta {
-    color: #333333; 
+    color: var(--color-texto-principal); 
     font-size: 18px;  
     line-height: 1.5;
     padding: 0 10px;
@@ -150,14 +151,11 @@ body {
 .icono-tarjeta {
    
     font-size: 50px; 
-    color: #FF9E57; 
-    
+    color:#FF9E57; 
     margin-bottom: 25px; 
-    
-    
     width: 80px;
     height: 80px;
-    background-color: #FFF8E7; 
+    background-color: var(--color-fondo-pagina); 
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -170,11 +168,11 @@ body {
 .seccion-transicion-planes {
     display: flex; 
     min-height: 380px;
-    background-color: #333333; 
+    background-color: var(--color-texto-principal); 
     padding: 0; 
     min-height: 450px; 
     align-items: stretch; 
-    color: white; 
+    color: var(--color-fondo-principal); 
      height: 100vh; 
   padding: 0 5%; 
 }
@@ -208,7 +206,7 @@ body {
 
 .titulo-transicion {
     font-size: 36px;
-    color: white; 
+    color: var(--color-fondo-principal); 
     margin-bottom: 15px;
     font-weight: bold; 
 }
@@ -216,7 +214,7 @@ body {
 .texto-transicion {
     font-size: 18px;
     
-    color: #B4FFFF; 
+    color: var(--color-acento-texto); 
     margin-bottom: 40px;
 }
 
@@ -225,8 +223,8 @@ body {
     display: inline-block;
     padding: 18px 40px;
     max-width: 300px;
-    background-color: #FF9E57; 
-    color: #333333; 
+    background-color:var(--color-acento-marca); 
+    color: #1A202C; 
     padding: 18px 50px;
     border: none;
     border-radius: 6px;
@@ -238,12 +236,12 @@ body {
 }
 
 .boton-cta-grande:hover {
-    background-color: #ffb882;
+    background-color: var(--color-acento-hover);
     transform: translateY(-2px);
 }
 .seccion-auspiciantes {
     padding: 40px 5%;
-    background-color: #FFF8E7; 
+    background-color: var(--color-fondo-pagina); 
     text-align: center;
     align-items: center;
     height: 50vh;

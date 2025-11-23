@@ -14,40 +14,47 @@ import { AuthService, LoginRequest } from '../../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string = ''; 
+  email: string = '';
   password: string = '';
   errorMessage: string = '';
   cargando: boolean = false;
- 
+
   constructor(
     private router: Router,
-    private authService: AuthService 
+    private authService: AuthService
   ) { }
 
   onLogin(): void {
     this.errorMessage = '';
     this.cargando = true;
 
-   
+
     const credenciales: LoginRequest = {
-        email: this.email,
-        password: this.password
+      email: this.email,
+      password: this.password
     };
 
     console.log('Intentando login con: ', credenciales);
     this.authService.login(credenciales).subscribe({
-      
-      next: () => {
-        this.router.navigate(['/panel']); 
+
+      next: (res) => {
+        console.log('Respuesta login:', res); // <- VERIFICAR AQUÍ
+        // Guardar token
+        localStorage.setItem('auth_token', res.data.token);
+
+        // Guardar perfil completo para el panel
+        localStorage.setItem('user_profile', JSON.stringify(res.data.profesionalPayload));
+
+        this.router.navigate(['/panel']);
         this.cargando = false;
       },
-      
+
       error: (err) => {
-       
+
         if (err.status === 401 || err.status === 403) {
-            this.errorMessage = 'Credenciales inválidas. Verifica tu email y contraseña.';
+          this.errorMessage = 'Credenciales inválidas. Verifica tu email y contraseña.';
         } else {
-            this.errorMessage = 'Error de conexión con el servidor. Inténtalo de nuevo.';
+          this.errorMessage = 'Error de conexión con el servidor. Inténtalo de nuevo.';
         }
         this.cargando = false;
       }

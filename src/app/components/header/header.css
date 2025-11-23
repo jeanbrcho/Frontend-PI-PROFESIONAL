@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* centra todo */
-  background-color: #FBF7EC;
+  background-color: var(--color-fondo-secundario);
 
 }
 
@@ -33,13 +33,13 @@
   font-size: 32px; /* 🔹 ajustá a tu gusto (40 si querés igual que en Figma) */
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  color: #FF9E57;
+  color:var( --color-acento-marca);
   margin: 0;
   letter-spacing: 1px;
 }
 
 .login-btn {
-  background-color: #FF9E57;
+  background-color:var( --color-acento-marca);
   color: #03466F;
   padding: 8px 15px;
   border-radius: 20px;
@@ -59,7 +59,7 @@
   width: 80%; /* mismo ancho que el logo-section */
   max-width: 1200px;
   padding: 10px 0;
-  background-color: #455A64;
+  background-color: var(--color-fondo-navbar);
   transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
   position: relative; /* no fijo al inicio */
   border-radius: 100px; /* opcional, bordes redondeados */
@@ -74,7 +74,7 @@
   border-radius: 0;         /* sin bordes redondeados */
   margin: 0;                /* sin márgenes */
   padding: 10px 0;          /* solo padding vertical */
-  background-color: #455A64;
+  background-color: var(--color-fondo-navbar);
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   z-index: 1000;
 }
@@ -100,6 +100,6 @@
 }
 
 .nav-links a:hover {
-  color: #FF9E57;
+  color:var( --color-acento-marca);
 }
 

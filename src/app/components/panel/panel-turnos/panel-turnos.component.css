@@ -1,0 +1,116 @@
+.panel-content-card {
+    background-color: var(--color-fondo-principal);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.panel-content-card h2 {
+    color: var(--color-texto-principal);;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #ff9933; 
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; 
+}
+
+
+table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0; 
+    font-size: 0.95rem;
+}
+
+thead th {
+    background-color: #f8f9fa;
+    color: #333333;
+    font-weight: 700;
+    text-align: left;
+    padding: 15px 15px;
+    border-bottom: 2px solid var(--color-borde);
+}
+
+tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #797573;
+}
+
+tbody td {
+    padding: 15px 15px;
+    vertical-align: middle;
+    color: var(--color-texto-principal);
+}
+
+
+.date-time-cell {
+    display: flex;
+    flex-direction: column;
+}
+.date-time-cell .date {
+    font-weight: 600;
+    color: var(--color-texto-principal);
+}
+.date-time-cell .time {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ff9933; 
+}
+
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap; 
+}
+
+.status-confirmado {
+    background-color: #e6f7ed; 
+    color: #38a169; 
+}
+
+
+
+.status-cancelado {
+    background-color: #fbe6e6; 
+    color: #e53e3e; 
+}
+
+
+.btn-action {
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-cancelar-turno {
+    background-color: #dc3545; 
+    color: white;
+    border: none;
+}
+
+.btn-cancelar-turno:hover {
+    background-color: #c82333;
+}
+
+
+.no-data {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 1.1rem;
+    color: #888;
+}
