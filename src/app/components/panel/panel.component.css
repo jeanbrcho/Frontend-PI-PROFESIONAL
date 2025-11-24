@@ -13,7 +13,6 @@
 
 
 
-
 .panel-sidebar {
     width: 250px; 
     padding: 20px 0;
@@ -36,6 +35,7 @@
     font-weight: 500;
     transition: background-color 0.2s, color 0.2s;
     border-left: 5px solid transparent; 
+    cursor: default !important;
 }
 
 

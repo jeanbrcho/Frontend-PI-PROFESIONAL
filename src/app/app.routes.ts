@@ -7,13 +7,14 @@ import {RegistroComponent} from './components/registro/registro.component';
 import {PanelTurnosComponent} from './components/panel/panel-turnos/panel-turnos.component';
 import {PanelServiciosComponent} from './components/panel/panel-servicios/panel-servicios.component';
 import {PanelPerfilComponent} from './components/panel/panel-perfil/panel-perfil.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
     {path: '', component: ProfesionalesComponent },
     {path: 'planes', component: PlanesComponent },
     {path: 'login', component: LoginComponent },
-    {path: 'panel', component: PanelComponent, 
+    {path: 'panel', component: PanelComponent, canActivate: [AuthGuard] , 
         children: [
     
     { path: '', redirectTo: 'perfil', pathMatch: 'full' }, 

@@ -1,4 +1,3 @@
-
 .panel-content-card {
     background-color: var(--color-fondo-principal);
     padding: 40px;
@@ -15,12 +14,22 @@
     margin-bottom: 20px;
 }
 
-
-.form-section h3 {
+/* Estilo para los títulos de sección dentro del formulario y la vista */
+.form-section h3, 
+.display-category h4 {
     color: var(--color-texto-principal);
     font-size: 1.3rem;
     margin-top: 30px;
     margin-bottom: 15px;
+    border-left: 5px solid #ff9933; /* Separador visual */
+    padding-left: 10px;
+}
+
+.section-separator {
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 30px 0;
 }
 
 
@@ -44,6 +53,7 @@
     border-radius: 6px;
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s;
+    resize: vertical; /* Permite redimensionar el textarea */
 }
 
 
@@ -52,10 +62,15 @@
     font-weight: normal;
 }
 
+/* Nuevo estilo para separar las categorías en el modo vista */
+.display-category {
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
 
 .display-data {
-    margin-top: 20px;
-    padding: 10px 0;
+    margin-top: 10px;
     padding-left: 20px; 
 }
 
@@ -85,6 +100,12 @@
     flex-grow: 1; 
 }
 
+/* Estilo para textos que ocupan varias líneas (ej. Biografía) */
+.multiline-value {
+    white-space: pre-wrap; /* Respeta saltos de línea y hace wrap */
+    word-break: break-word; 
+}
+
 
 .status-success {
     color: #28a745; 
@@ -111,7 +132,7 @@
     padding: 12px 25px;
     border-radius: 6px;
     font-weight: 700;
-    cursor: pointer;
+    cursor: default;
     transition: all 0.2s;
     box-shadow: 0 2px 4px rgba(255, 153, 51, 0.2); 
 }
@@ -129,7 +150,7 @@
     border-radius: 6px;
     font-size: 1rem;
     font-weight: 700;
-    cursor: pointer;
+    cursor: default;
     transition: background-color 0.2s;
 }
 
@@ -144,7 +165,7 @@
     padding: 12px 25px;
     border-radius: 6px;
     font-weight: 700;
-    cursor: pointer;
+    cursor: default;
     transition: all 0.2s;
 }
 
