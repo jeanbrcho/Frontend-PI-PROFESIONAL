@@ -13,8 +13,9 @@
     font-size: 1.8rem;
     border-bottom: 3px solid #ff9933; 
     padding-bottom: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
+
 
 
 .perfil-form h3 {
@@ -101,6 +102,7 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
+    margin-top: 20px;;
 }
 
 .btn-editar:hover {
@@ -115,17 +117,22 @@
 
 .display-data {
     margin-top: 20px;
-    padding: 10px 0;
-   
-    padding-left: 20px; 
+    /* 🔑 Quitar padding left si quieres que la línea ocupe todo */
+    padding: 10px 0; 
+    /* padding-left: 20px; <--- Remueve esto */
 }
 
 .display-group {
-   
     display: flex;
-    padding: 12px 0;
+    padding: 15px 20px; /* 🔑 Más padding vertical y horizontal para aire */
     border-bottom: 1px solid var(--color-borde); 
     align-items: center;
+    transition: background-color 0.2s; 
+}
+
+/* 🔑 Efecto de resaltar la fila al pasar el ratón */
+.display-group:hover {
+    background-color: var(--color-fondo-panel-lateral); /* Un gris muy sutil de tu paleta */
 }
 
 .display-group:last-child {
@@ -133,19 +140,17 @@
 }
 
 .display-group .label {
-    font-weight: 600;
-    color: var(--color-texto-principal);
-   
-    width: 200px; 
+    font-weight: 700; /* Un poco más de peso */
+    color: var(--color-texto-secundario); /* 🔑 Color secundario para diferenciarse del valor */
+    width: 250px; /* Más ancho para las etiquetas */
     flex-shrink: 0;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 .display-group .value {
     color: var(--color-texto-principal);
-    font-size: 1rem;
+    font-size: 1.1rem; /* Un poco más grande */
     font-weight: 500;
-   
     flex-grow: 1; 
 }
 
@@ -175,17 +180,17 @@
 
 .btn-cancelar {
     
-    background-color: rgb(149, 149, 230); 
+    background-color: rgb(243, 47, 96); 
     color: #f3dcdf; 
     border: 1px solid #dc3545; /* Borde rojo */
     display: block;
     width: 200px;
     padding: 12px 20px;
     margin-top: 30px;
-    
+    font-size: 1rem;
     border-radius: 6px;
     font-weight: 700;
-    cursor: pointer;
+    cursor: default;
     transition: all 0.2s;
 }
 

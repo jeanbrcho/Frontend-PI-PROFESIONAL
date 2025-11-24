@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panel',
@@ -11,8 +12,19 @@ import { RouterModule } from '@angular/router';
 })
 export class PanelComponent {
 
+   constructor(private router: Router) {}
   onLogoutClick() {
-    // Lógica para cerrar sesión, como limpiar tokens, redirigir, etc.
+   
+    // Borrar todo lo relacionado al usuario
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('user_profile');
+    localStorage.removeItem('professional_id');
+    
+    
+
+    // Redirigir al login
+    this.router.navigate(['/']);
+  
     console.log('Cerrando sesión...');
   } 
 
