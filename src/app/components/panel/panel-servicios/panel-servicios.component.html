@@ -1,34 +1,98 @@
 <div class="panel-content-card">
-    <h2>🐶 Servicios y Disponibilidad</h2>
-    <p>Gestiona tu información pública, horarios de atención y lista de servicios.</p>
+    <h2> 📋 Servicios</h2>
+    <p>Gestiona tu información de horarios de atención, lista de servicios y precios.</p>
     
+    <!--  MODO EDICIÓN -->
     <form class="servicios-form" *ngIf="isEditing" (ngSubmit)="guardarCambios()">
         
+       
+        <!-- info general del profesional  -->
+        
         <div class="form-section">
-            <h3>Información Pública</h3>
+            <h3>Información General</h3>
+
+            <div class="form-group">
+                <label for="biografia">Establecimiento:</label>
+                <textarea 
+                    id="biografia" 
+                    [(ngModel)]="serviciosData.nombreEstablecimiento" 
+                    name="nombrEstablecimiento"
+                    rows="4" 
+                    placeholder="Nombre de tu establecimiento o clínica..."
+                ></textarea>
+            </div>
+            <div class="form-group">
+                <label for="biografia">Biografía:</label>
+                <textarea 
+                    id="biografia" 
+                    [(ngModel)]="serviciosData.biografia" 
+                    name="biografia"
+                    rows="4" 
+                    placeholder="Describe tu experiencia y tu enfoque profesional..."
+                ></textarea>
+            </div>
+
             <div class="form-group">
                 <label for="especialidad">Especialidad Principal:</label>
-                <input type="text" id="especialidad" [(ngModel)]="serviciosData.especialidad" name="especialidad" [disabled]="!isEditing">
+                <input 
+                    type="text" 
+                    id="especialidad" 
+                    [(ngModel)]="serviciosData.especialidad" 
+                    name="especialidad"
+                    placeholder="Ej: Odontología Pediátrica, Medicina Felina."
+                >
             </div>
-            <div class="form-group">
-                <label for="descripcion">Descripción de Servicios (Público):</label>
-                <textarea id="descripcion" [(ngModel)]="serviciosData.descripcion" name="descripcion" [disabled]="!isEditing"></textarea>
-            </div>
+          <div class="form-section">
+  <h3>Dirección</h3>
+  <div class="form-group">
+    <label for="street">Calle:</label>
+    <input type="text" id="street" [(ngModel)]="serviciosData.street" name="street">
+  </div>
+  <div class="form-group">
+    <label for="streetNumber">Número:</label>
+    <input type="text" id="streetNumber" [(ngModel)]="serviciosData.streetNumber" name="streetNumber">
+  </div>
+  <div class="form-group">
+    <label for="neighborhood">Barrio:</label>
+    <input type="text" id="neighborhood" [(ngModel)]="serviciosData.neighborhood" name="neighborhood">
+  </div>
+  <div class="form-group">
+    <label for="province">Provincia:</label>
+    <input type="text" id="province" [(ngModel)]="serviciosData.province" name="province">
+  </div>
+</div>
+
+
         </div>
 
-        <hr>
+        <hr class="section-separator">
 
+       
+        <!-- Servicios que ofrece -->
+        
         <div class="form-section">
-            <h3>Disponibilidad y Tarifas</h3>
-            <div class="form-group">
-                <label for="precioBase">Precio Base (Referencia):</label>
-                <input type="number" id="precioBase" [(ngModel)]="serviciosData.precioBase" name="precioBase" [disabled]="!isEditing">
-            </div>
+            <h3>Configuración de Servicios y Tarifas</h3>
             
             <div class="form-group">
-                <label>Atención a Domicilio:</label>
-                <input type="checkbox" id="domicilio" [(ngModel)]="serviciosData.domicilio" name="domicilio" [disabled]="!isEditing">
-                <label for="domicilio" class="checkbox-label">{{ serviciosData.domicilio ? 'Sí, ofrezco domicilio' : 'No, solo en local' }}</label>
+                <label for="descripcion">Descripción Detallada de Servicios:</label>
+                <textarea 
+                    id="descripcion" 
+                    [(ngModel)]="serviciosData.descripcion" 
+                    name="descripcion"
+                    rows="3"
+                    placeholder="Detalla los procedimientos que ofreces (ej: corte de pelo, diagnóstico, cirugías)."
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="precioBase">Precio Base (ARS):</label>
+                <input 
+                    type="number" 
+                    id="precioBase" 
+                    [(ngModel)]="serviciosData.precioBase" 
+                    name="precioBase"
+                    placeholder="Ej: 3500"
+                >
             </div>
         </div>
         
@@ -42,35 +106,77 @@
                 Cancelar
             </button>
         </div>
-        
     </form>
     
-    <ng-container *ngIf="!isEditing">
-        <div class="display-data">
-            
-            <div class="display-group">
-                <span class="label">Especialidad:</span>
-                <span class="value">{{ serviciosData.especialidad }}</span>
-            </div>
-            <div class="display-group">
-                <span class="label">Descripción:</span>
-                <span class="value">{{ serviciosData.descripcion }}</span>
-            </div>
-            <div class="display-group">
-                <span class="label">Tarifa Base Estimada:</span>
-                <span class="value">${{ serviciosData.precioBase }} ARS</span>
-            </div>
-            <div class="display-group">
-                <span class="label">Atención a Domicilio:</span>
-                <span class="value">
-                    <span [ngClass]="{'status-success': serviciosData.domicilio, 'status-fail': !serviciosData.domicilio}">
-                        {{ serviciosData.domicilio ? '✅ Sí' : '❌ No' }}
-                    </span>
-                </span>
-            </div>
 
-        </div>
+    <!--  MODO VISTA -->
+    <ng-container *ngIf="!isEditing">
         
+      
+        <!-- info general del local /profesional -->
+       
+        <div class="display-category">
+            <h4>Información General </h4>
+            
+            <div class="display-data">
+
+                <div class="display-group">
+                    <span class="label">Establecimiento:</span>
+                    <span class="value">
+                        {{ serviciosData.nombreEstablecimiento || 'Sin información' }}
+                    </span>
+                </div>
+
+                <div class="display-group">
+                    <span class="label">Biografía:</span>
+                    <span class="value multiline-value">
+                        {{ serviciosData.biografia || 'Sin información' }}
+                    </span>
+                </div>
+
+                <div class="display-group">
+  <span class="label">Dirección:</span>
+  <span class="value">{{ serviciosData.direccion || 'Sin dirección' }}</span>
+</div>
+
+
+               
+            </div>
+        </div>
+
+        <hr class="section-separator">
+        
+       
+        <!-- especifico de servicios que ofrece  -->
+       
+        <div class="display-category">
+            <h4>Detalles de Servicio y Precios</h4>
+
+            <div class="display-data">
+
+                 <div class="display-group">
+                    <span class="label">Especialidad Principal:</span>
+                    <span class="value">
+                        {{ serviciosData.especialidad || 'Sin información' }}
+                    </span>
+                </div>
+
+                <div class="display-group">
+                    <span class="label">Descripción de Servicios:</span>
+                    <span class="value multiline-value">
+                        {{ serviciosData.descripcion || 'Sin descripción disponible' }}
+                    </span>
+                </div>
+
+                <div class="display-group">
+                    <span class="label">Tarifa Base:</span>
+                    <span class="value status-success">
+                        {{ serviciosData.precioBase ? ('$' + serviciosData.precioBase + ' ARS') : 'No especificada' }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
         <hr>
 
         <div class="action-buttons">

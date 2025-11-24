@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService, LoginRequest } from '../../services/auth.service';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -28,29 +27,35 @@ export class LoginComponent {
     this.errorMessage = '';
     this.cargando = true;
 
-
     const credenciales: LoginRequest = {
       email: this.email,
       password: this.password
     };
 
     console.log('Intentando login con: ', credenciales);
-    this.authService.login(credenciales).subscribe({
 
+    this.authService.login(credenciales).subscribe({
       next: (res) => {
-        console.log('Respuesta login:', res); // <- VERIFICAR AQUÍ
+        console.log('Respuesta login:', res);
+
         // Guardar token
         localStorage.setItem('auth_token', res.data.token);
 
         // Guardar perfil completo para el panel
-        localStorage.setItem('user_profile', JSON.stringify(res.data.profesionalPayload));
+        const perfilAGuardar = res.data.profesionalPayload;
+        localStorage.setItem('user_profile', JSON.stringify(perfilAGuardar));
+
+        // 🔑 Guardar ID del profesional para PanelServicios
+        localStorage.setItem('professional_id', res.data.profesionalPayload.id);
+
+
+        console.log('Perfil guardado:', perfilAGuardar);
 
         this.router.navigate(['/panel']);
         this.cargando = false;
       },
 
       error: (err) => {
-
         if (err.status === 401 || err.status === 403) {
           this.errorMessage = 'Credenciales inválidas. Verifica tu email y contraseña.';
         } else {

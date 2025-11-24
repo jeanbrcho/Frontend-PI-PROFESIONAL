@@ -1,50 +1,86 @@
 <div class="panel-content-card">
   <h2>👤 Mi Perfil</h2>
 
-  <form *ngIf="isEditing" class="perfil-form">
-    <div class="form-group">
-      <label for="name">Nombre:</label>
-      <input type="text" id="name" [(ngModel)]="profesionalData.name" [disabled]="!isEditing">
-    </div>
 
-    <div class="form-group">
-      <label for="lastname">Apellido:</label>
-      <input type="text" id="lastname" [(ngModel)]="profesionalData.lastname" [disabled]="!isEditing">
-    </div>
 
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="profesionalData.email" [disabled]="!isEditing">
-    </div>
+  <!-- 🔑 CLAVE: El formulario usa (ngSubmit) para llamar a guardarCambios() -->
+ <form *ngIf="isEditing" class="perfil-form" (ngSubmit)="guardarCambios()">
 
-    <div class="form-group">
-      <label for="phone">Teléfono:</label>
-      <input type="text" id="phone" [(ngModel)]="profesionalData.phone" [disabled]="!isEditing">
-    </div>
-
-    <div class="form-group">
-      <label for="dni">DNI:</label>
-      <input type="text" id="dni" [(ngModel)]="profesionalData.dni" disabled>
-    </div>
-
-    <div class="form-group">
-      <label for="license">Licencia:</label>
-      <input type="text" id="license" [(ngModel)]="profesionalData.license" disabled>
-    </div>
-
-    <div class="action-buttons">
-      <button type="button" class="btn-guardar" (click)="guardarCambios()">Guardar Cambios</button>
-      <button type="button" class="btn-cancelar" (click)="toggleEditMode()">Cancelar</button>
-    </div>
-  </form>
-
-  <div *ngIf="!isEditing" class="display-data">
-    <p><strong>Nombre:</strong> {{ profesionalData.name }} {{ profesionalData.lastname }}</p>
-    <p><strong>Email:</strong> {{ profesionalData.email }}</p>
-    <p><strong>Teléfono:</strong> {{ profesionalData.phone }}</p>
-    <p><strong>DNI:</strong> {{ profesionalData.dni }}</p>
-    <p><strong>Licencia:</strong> {{ profesionalData.license }}</p>
-
-    <button type="button" class="btn-editar" (click)="toggleEditMode()">✏️ Editar Perfil</button>
+ <!--  profesionalDataDraft para evitar modificar los datos originales al editar. -->
+ <div class="form-group">
+   <label for="name">Nombre:</label>
+ <input type="text" id="name" name="name" [(ngModel)]="profesionalDataDraft.name" [disabled]="!isEditing" required>
   </div>
+
+  <div class="form-group">
+ <label for="lastname">Apellido:</label>
+ <input type="text" id="lastname" name="lastname" [(ngModel)]="profesionalDataDraft.lastname" [disabled]="!isEditing" required>
+ </div>
+
+  <div class="form-group">
+   <label for="email">Email:</label>
+   <!-- Email es solo lectura -->
+   <input type="email" id="email" name="email" [(ngModel)]="profesionalDataDraft.email" [disabled]="!isEditing" required>
+  </div>
+
+  <div class="form-group">
+   <label for="phone">Teléfono:</label>
+   <input type="text" id="phone" name="phone" [(ngModel)]="profesionalDataDraft.phone" [disabled]="!isEditing" required>
+  </div>
+
+  <div class="form-group">
+   <label for="dni">DNI:</label>
+   <!-- DNI es solo lectura -->
+   <input type="text" id="dni" name="dni" [(ngModel)]="profesionalDataDraft.dni" disabled class="input-disabled">
+  </div>
+
+  <div class="form-group">
+   <label for="license">Licencia:</label>
+   <!-- Licencia es solo lectura -->
+   <input type="text" id="license" name="license" [(ngModel)]="profesionalDataDraft.license" disabled class="input-disabled">
+  </div>
+
+  <div class="action-buttons">
+   <!-- 🔑 CLAVE: Botón Guardar es type="submit", usa [disabled]="isSaving" y muestra el estado -->
+   <button type="submit" class="btn-guardar" [disabled]="isSaving">
+    {{ isSaving ? 'Guardando...' : 'Guardar Cambios' }}
+   </button>
+   <!-- El botón Cancelar llama a toggleEditMode para salir de la edición sin guardar -->
+   <button type="button" class="btn-cancelar" (click)="toggleEditMode()">Cancelar</button>
+  </div>
+ </form>
+
+ <!-- ============================================= -->
+ <!-- MODO VISTA (No editable) -->
+ <!-- ============================================= -->
+ <div *ngIf="!isEditing" class="display-data">
+  
+  
+  <div class="display-group">
+   <span class="label">Nombre Completo:</span>
+   <span class="value">{{ profesionalData.name }} {{ profesionalData.lastname }}</span>
+  </div>
+
+  <div class="display-group">
+   <span class="label">Email:</span>
+   <span class="value">{{ profesionalData.email }}</span>
+  </div>
+
+  <div class="display-group">
+   <span class="label">Teléfono:</span>
+   <span class="value">{{ profesionalData.phone }}</span>
+  </div>
+  
+  <div class="display-group">
+   <span class="label">DNI:</span>
+   <span class="value">{{ profesionalData.dni }}</span>
+  </div>
+  
+  <div class="display-group">
+   <span class="label">Licencia:</span>
+   <span class="value">{{ profesionalData.license }}</span>
+  </div>
+
+  <button type="button" class="btn-editar" (click)="toggleEditMode()">✏️ Editar Perfil</button>
+ </div>
 </div>
