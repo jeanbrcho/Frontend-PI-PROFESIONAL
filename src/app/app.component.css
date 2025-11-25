@@ -4,7 +4,7 @@
     position: fixed; 
     top: 90px;       /* O el valor que prefieras */
     right: 5%;       
-    z-index: 999;    
+    z-index: 1050;    
 
     /* 🔑 CLAVE: Hacer el botón más grande y redondo */
     width: 60px;     /* Ancho fijo */
@@ -21,6 +21,13 @@
     border: none; /* Asegurar que no tenga un borde por defecto */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil para darle profundidad */
     
+}
+
+/* Ocultar botón flotante en móviles (se usa el del menú) */
+@media (max-width: 768px) {
+    .dark-mode-btn-flotante {
+        display: none;
+    }
 }
 
 /* 🔑 CLAVE: Estilo de los Íconos dentro del botón */
@@ -42,4 +49,34 @@
     background-color: whitesmoke; /* Fondo Claro (color del tema al que irás) */
     color: orangered;         /* Texto Oscuro (color del ícono) */
     border: 1px solid var(--color-borde);
+}
+
+/* RESPONSIVE */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .dark-mode-btn-flotante {
+        width: 50px;
+        height: 50px;
+        top: 80px;
+        right: 4%;
+    }
+    
+    .dark-mode-btn-flotante i {
+        font-size: 16px;
+    }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+    .dark-mode-btn-flotante {
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 70px;
+    }
+    
+    .dark-mode-btn-flotante i {
+        font-size: 13px;
+    }
 }
