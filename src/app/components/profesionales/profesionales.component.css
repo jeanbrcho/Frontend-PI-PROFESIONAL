@@ -111,7 +111,7 @@ body {
 
 .tarjeta-servicio {
      
-    max-width: 350px; 
+    width: 350px; 
     min-height: 250px;  
     flex: 1;
     
@@ -273,4 +273,185 @@ body {
 .logo-auspiciante:hover {
     filter: grayscale(0%) brightness(100%); 
     opacity: 1;
+}
+
+/* RESPONSIVE */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .titulo-principal {
+    font-size: 42px;
+  }
+  
+  .texto-principal {
+    font-size: 16px;
+  }
+  
+  .seccion-servicios {
+    flex-direction: column;
+    height: auto;
+    padding: 60px 5%;
+  }
+  
+  .tarjeta-servicio {
+    max-width: 80%;
+  }
+  
+  .seccion-transicion-planes {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .columna-imagen-planes {
+    min-height: 300px;
+  }
+  
+  .titulo-transicion {
+    font-size: 32px;
+  }
+  
+  .texto-transicion {
+    font-size: 16px;
+  }
+  
+  .seccion-auspiciantes {
+    height: auto;
+    padding: 40px 5%;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .seccion-principal {
+    height: 60vh;
+    min-height: 400px;
+    padding: 0 3%;
+  }
+  
+  .titulo-principal {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  
+  .texto-principal {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .boton {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .seccion-servicios {
+    padding: 40px 5%;
+    gap: 20px;
+  }
+  
+  .tarjeta-servicio {
+    max-width: 100%;
+    min-height: 200px;
+    padding: 30px 20px;
+  }
+  
+  .icono-tarjeta {
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  
+  .titulo-tarjeta {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .texto-tarjeta {
+    font-size: 16px;
+  }
+  
+  .seccion-transicion-planes {
+    padding: 0;
+  }
+  
+  .columna-imagen-planes {
+    min-height: 100px;
+    padding: 30px 5%;
+  }
+
+  
+  .columna-contenido-planes {
+    padding: 40px 5%;
+  }
+  
+  .titulo-transicion {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .texto-transicion {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+  
+  .boton-cta-grande {
+    padding: 14px 30px;
+    font-size: 16px;
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .seccion-auspiciantes {
+    padding: 30px 5%;
+  }
+  
+  .titulo-auspiciantes {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .contenedor-logos {
+    gap: 15px;
+  }
+  
+  .logo-auspiciante {
+    height: 40px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .titulo-principal {
+    font-size: 24px;
+  }
+  
+  .seccion-servicios {
+    padding: 30px 3%;
+  }
+  
+  .tarjeta-servicio {
+    padding: 25px 15px;
+  }
+  
+  .titulo-tarjeta {
+    font-size: 20px;
+  }
+  
+  .texto-tarjeta {
+    font-size: 14px;
+  }
+  
+  .titulo-transicion {
+    font-size: 20px;
+  }
+  
+  .texto-transicion {
+    font-size: 13px;
+  }
+  
+  .boton-cta-grande {
+    padding: 12px 25px;
+    font-size: 15px;
+  }
 }
