@@ -1,189 +1,79 @@
 <div class="panel-content-card">
-    <h2> 📋 Servicios</h2>
-    <p>Gestiona tu información de horarios de atención, lista de servicios y precios.</p>
-    
-    <!--  MODO EDICIÓN -->
-    <form class="servicios-form" *ngIf="isEditing" (ngSubmit)="guardarCambios()">
-        
-       
-        <!-- info general del profesional  -->
-        
-        <div class="form-section">
-            <h3>Información General</h3>
-
-            <div class="form-group">
-                <label for="biografia">Establecimiento:</label>
-                <textarea 
-                    id="biografia" 
-                    [(ngModel)]="serviciosData.nombreEstablecimiento" 
-                    name="nombrEstablecimiento"
-                    rows="4" 
-                    placeholder="Nombre de tu establecimiento o clínica..."
-                ></textarea>
-            </div>
-            <div class="form-group">
-                <label for="biografia">Biografía:</label>
-                <textarea 
-                    id="biografia" 
-                    [(ngModel)]="serviciosData.biografia" 
-                    name="biografia"
-                    rows="4" 
-                    placeholder="Describe tu experiencia y tu enfoque profesional..."
-                ></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="especialidad">Especialidad Principal:</label>
-                <input 
-                    type="text" 
-                    id="especialidad" 
-                    [(ngModel)]="serviciosData.especialidad" 
-                    name="especialidad"
-                    placeholder="Ej: Odontología Pediátrica, Medicina Felina."
-                >
-            </div>
-          <div class="form-section">
-  <h3>Dirección</h3>
-  <div class="form-group">
-    <label for="street">Calle:</label>
-    <input type="text" id="street" [(ngModel)]="serviciosData.street" name="street">
+  <div class="header-with-button">
+    <div>
+      <h2>📋 Servicios</h2>
+      <p>Gestiona tu información de servicios y tarifas.</p>
+    </div>
+    <button class="btn-agregar" (click)="abrirModal()">➕ Agregar Servicio</button>
   </div>
-  <div class="form-group">
-    <label for="streetNumber">Número:</label>
-    <input type="text" id="streetNumber" [(ngModel)]="serviciosData.streetNumber" name="streetNumber">
+
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio (ARS)</th>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of servicios">
+          <td>{{ service.name }}</td>
+          <td>{{ service.description }}</td>
+          <td>{{ service.price }}</td>
+          <td>
+            <button (click)="abrirModal(service)" class="btn-action btn-confirmar">Editar</button>
+          </td>
+          <td>
+            <button (click)="abrirConfirmDelete(service)" class="btn-action btn-cancelar">Cancelar Turno</button>
+          </td>
+        </tr>
+        <tr *ngIf="servicios.length === 0">
+          <td colspan="5">No hay servicios registrados.</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="form-group">
-    <label for="neighborhood">Barrio:</label>
-    <input type="text" id="neighborhood" [(ngModel)]="serviciosData.neighborhood" name="neighborhood">
+
+  <!-- Modal de Agregar / Editar -->
+  <div class="modal-backdrop" *ngIf="modalVisible">
+    <div class="modal">
+      <h3>{{ editingService ? 'Editar Servicio' : 'Agregar Servicio' }}</h3>
+
+      <div class="form-group">
+        <label>Nombre del Servicio:</label>
+        <input type="text" [(ngModel)]="modalService.name" placeholder="Nombre del servicio">
+      </div>
+
+      <div class="form-group">
+        <label>Descripción:</label>
+        <textarea [(ngModel)]="modalService.description" placeholder="Descripción del servicio"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Precio (ARS):</label>
+        <input type="text" [(ngModel)]="modalService.price" placeholder="Precio">
+      </div>
+
+      <div class="modal-buttons">
+        <button (click)="guardarModal()" class="btn-action btn-confirmar"> Guardar Cambios</button>
+        <button (click)="cerrarModal()" class="btn-action btn-cancelar">Cancelar</button>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="province">Provincia:</label>
-    <input type="text" id="province" [(ngModel)]="serviciosData.province" name="province">
+
+  <!-- Modal de Confirmación para Eliminar -->
+  <div class="modal-backdrop" *ngIf="confirmDeleteModalVisible">
+    <div class="modal">
+      <h3>Confirmar Eliminación</h3>
+      <p>¿Estás seguro que querés eliminar este servicio?</p>
+
+      <div class="modal-buttons">
+        <button class="btn-action btn-cancelar" (click)="cerrarConfirmDelete()">No, volver</button>
+        <button class="btn-action btn-confirmar" (click)="confirmarEliminarServicio()">Si, cancelar turno</button>
+      </div>
+    </div>
   </div>
-</div>
-
-
-        </div>
-
-        <hr class="section-separator">
-
-       
-        <!-- Servicios que ofrece -->
-        
-        <div class="form-section">
-            <h3>Configuración de Servicios y Tarifas</h3>
-            
-            <div class="form-group">
-                <label for="descripcion">Descripción Detallada de Servicios:</label>
-                <textarea 
-                    id="descripcion" 
-                    [(ngModel)]="serviciosData.descripcion" 
-                    name="descripcion"
-                    rows="3"
-                    placeholder="Detalla los procedimientos que ofreces (ej: corte de pelo, diagnóstico, cirugías)."
-                ></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="precioBase">Precio Base (ARS):</label>
-                <input 
-                    type="number" 
-                    id="precioBase" 
-                    [(ngModel)]="serviciosData.precioBase" 
-                    name="precioBase"
-                    placeholder="Ej: 3500"
-                >
-            </div>
-        </div>
-        
-        <hr>
-
-        <div class="action-buttons">
-            <button type="submit" class="btn-guardar">
-                Guardar Cambios
-            </button>
-            <button type="button" (click)="toggleEditMode()" class="btn-cancelar">
-                Cancelar
-            </button>
-        </div>
-    </form>
-    
-
-    <!--  MODO VISTA -->
-    <ng-container *ngIf="!isEditing">
-        
-      
-        <!-- info general del local /profesional -->
-       
-        <div class="display-category">
-            <h4>Información General </h4>
-            
-            <div class="display-data">
-
-                <div class="display-group">
-                    <span class="label">Establecimiento:</span>
-                    <span class="value">
-                        {{ serviciosData.nombreEstablecimiento || 'Sin información' }}
-                    </span>
-                </div>
-
-                <div class="display-group">
-                    <span class="label">Biografía:</span>
-                    <span class="value multiline-value">
-                        {{ serviciosData.biografia || 'Sin información' }}
-                    </span>
-                </div>
-
-                <div class="display-group">
-  <span class="label">Dirección:</span>
-  <span class="value">{{ serviciosData.direccion || 'Sin dirección' }}</span>
-</div>
-
-
-               
-            </div>
-        </div>
-
-        <hr class="section-separator">
-        
-       
-        <!-- especifico de servicios que ofrece  -->
-       
-        <div class="display-category">
-            <h4>Detalles de Servicio y Precios</h4>
-
-            <div class="display-data">
-
-                 <div class="display-group">
-                    <span class="label">Especialidad Principal:</span>
-                    <span class="value">
-                        {{ serviciosData.especialidad || 'Sin información' }}
-                    </span>
-                </div>
-
-                <div class="display-group">
-                    <span class="label">Descripción de Servicios:</span>
-                    <span class="value multiline-value">
-                        {{ serviciosData.descripcion || 'Sin descripción disponible' }}
-                    </span>
-                </div>
-
-                <div class="display-group">
-                    <span class="label">Tarifa Base:</span>
-                    <span class="value status-success">
-                        {{ serviciosData.precioBase ? ('$' + serviciosData.precioBase + ' ARS') : 'No especificada' }}
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="action-buttons">
-            <button type="button" (click)="toggleEditMode()" class="btn-editar">
-                ✏️ Editar Servicios
-            </button>
-        </div>
-    </ng-container>
-
 </div>

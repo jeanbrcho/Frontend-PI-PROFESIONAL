@@ -13,42 +13,35 @@ import { interval, Subscription } from 'rxjs';
 })
 export class PanelServiciosComponent implements OnInit {
 
-  isEditing: boolean = false;
+  professionalId: string = '';
+  servicios: Array<{ id: string, name: string, description: string, price: number }> = [];
 
-  serviciosData = {
-    nombreEstablecimiento: '',
-    biografia:'',
-    street: '',
-  streetNumber: '',
-  neighborhood: '',
-  province: '',
-    direccion: '',
-    especialidad: '',
-    descripcion: '',
-    precioBase: 0
-  };
+  // Modal principal
+  modalVisible = false;
+  editingService: any = null;
+  modalService = { name: '', description: '', price: 0 };
+
+  // Modal de confirmación de eliminación
+  confirmDeleteModalVisible = false;
+  serviceToDelete: any = null;
 
   private checkIdSubscription: Subscription | null = null;
 
   constructor(private serviciosService: ServiciosService) {}
 
   ngOnInit(): void {
-    // Intentamos obtener el ID inmediatamente
     this.tryLoadServices();
 
-    // Si no está, revisamos cada 500ms hasta que exista
     this.checkIdSubscription = interval(500).subscribe(() => {
       this.tryLoadServices();
     });
   }
 
   private tryLoadServices(): void {
-    const professionalId = localStorage.getItem('professional_id');
-    if (professionalId) {
-      // Ya tenemos el ID, cargamos los servicios
-      this.cargarServicios(professionalId);
-
-      // Cancelamos la suscripción porque ya no necesitamos chequear más
+    const id = localStorage.getItem('professional_id');
+    if (id) {
+      this.professionalId = id;
+      this.cargarServicios(id);
       if (this.checkIdSubscription) {
         this.checkIdSubscription.unsubscribe();
         this.checkIdSubscription = null;
@@ -56,40 +49,82 @@ export class PanelServiciosComponent implements OnInit {
     }
   }
 
- cargarServicios(id: string): void {
-  this.serviciosService.getProfessionalWithServices(id).subscribe({
-    next: (res) => {
-      const profesional = res.data; // <-- acá está el objeto del profesional
-      const srv = profesional.services?.[0];
-
-      this.serviciosData = {
-        nombreEstablecimiento: profesional.nameEstablishment || '',
-        biografia: profesional.biography || '',
-         street:  profesional.street || '',
-        streetNumber:  profesional.streetNumber || '',
-        neighborhood:  profesional.neighborhood || '',
-        province:  profesional.province || '',
-        direccion: `${profesional.street || ''} ${profesional.streetNumber || ''}, ${profesional.neighborhood || ''}, ${profesional.province || ''}`,
-        especialidad: profesional.specialty || '',
-        descripcion: srv?.description || profesional.biography || '',
-        precioBase: srv?.price || 0
-      };
-
-      console.log('Servicios cargados:', this.serviciosData);
-    },
-    error: (error) => {
-      console.error('Error al cargar servicios', error);
-    }
-  });
-}
-
-  toggleEditMode(): void {
-    this.isEditing = !this.isEditing;
+  cargarServicios(id: string): void {
+    this.serviciosService.getProfessionalWithServices(id).subscribe({
+      next: (res) => {
+        const prof = res.data;
+        this.servicios = prof.services?.map((s: any) => ({
+          id: s.id,
+          name: s.name || '',
+          description: s.description || '',
+          price: s.price || 0
+        })) || [];
+      },
+      error: (err) => console.error('Error al cargar servicios:', err)
+    });
   }
 
-  guardarCambios(): void {
-    console.log("Guardando cambios:", this.serviciosData);
-    // futuro PATCH con token
-    this.toggleEditMode();
+  // ================= Modal =================
+  abrirModal(service?: any) {
+    if (service) {
+      this.editingService = service;
+      this.modalService = { ...service };
+    } else {
+      this.editingService = null;
+      this.modalService = { name: '', description: '', price: 0 };
+    }
+    this.modalVisible = true;
+  }
+
+  cerrarModal() {
+    this.modalVisible = false;
+    this.modalService = { name: '', description: '', price: 0 };
+    this.editingService = null;
+  }
+
+  guardarModal() {
+    if (!this.modalService.name || !this.modalService.description || this.modalService.price <= 0) return;
+
+    if (this.editingService) {
+      // Editar servicio existente
+      this.serviciosService.updateService(this.professionalId, this.editingService.id, this.modalService)
+        .subscribe({
+          next: () => this.cargarServicios(this.professionalId),
+          error: (err) => console.error('Error al actualizar servicio:', err)
+        });
+    } else {
+      // Crear nuevo servicio
+      this.serviciosService.createService({
+        professionalId: this.professionalId,
+        ...this.modalService
+      }).subscribe({
+        next: () => this.cargarServicios(this.professionalId),
+        error: (err) => console.error('Error al crear servicio:', err)
+      });
+    }
+
+    this.cerrarModal();
+  }
+
+  // ================= Eliminar =================
+  abrirConfirmDelete(service: any) {
+    this.serviceToDelete = service;
+    this.confirmDeleteModalVisible = true;
+  }
+
+  cerrarConfirmDelete() {
+    this.serviceToDelete = null;
+    this.confirmDeleteModalVisible = false;
+  }
+
+  confirmarEliminarServicio() {
+    if (this.serviceToDelete) {
+      this.serviciosService.deleteService(this.professionalId, this.serviceToDelete.id)
+        .subscribe({
+          next: () => this.cargarServicios(this.professionalId),
+          error: (err) => console.error('Error al eliminar servicio:', err)
+        });
+      this.cerrarConfirmDelete();
+    }
   }
 }
