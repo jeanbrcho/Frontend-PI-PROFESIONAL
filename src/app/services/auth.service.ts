@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { IProfile } from '../interfaces/iprofile';
+import { IProfessional, IProfessionalData } from '../interfaces/IProfessional'
 
 
 export interface LoginRequest {
@@ -27,6 +28,14 @@ interface IResponseProfile {
   data?: IProfile;
 }
 
+interface IProfessionalResponse {
+  status: string;
+  message: string;
+  data: {
+    profesional: IProfessional;
+  };
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,6 +46,11 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+
+  register(professionalData: IProfessionalData): Observable<IProfessionalResponse> {
+    const urlRegisterProfessional = `${this.baseUrl}/professionals`
+    return this.http.post<IProfessionalResponse>(urlRegisterProfessional, professionalData)
+  }
 
   login(credenciales: LoginRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(this.loginUrl, credenciales).pipe(
@@ -66,7 +80,7 @@ export class AuthService {
   }
 
   userProfile(): Observable<IResponseProfile> {
-    const urlProfile = `${this.baseUrl}/auth/profile`;
+    const urlProfile = `${this.baseUrl}/professionals/${localStorage.getItem('professional_id')}/services`;
     console.log(localStorage.getItem('auth_token'))
     const headers = {
       Authorization: `Bearer ${localStorage.getItem('auth_token')}`, //el token se envía en el header
