@@ -80,7 +80,7 @@ export class AuthService {
   }
 
   userProfile(): Observable<IResponseProfile> {
-    const urlProfile = `${this.baseUrl}/auth/profile`;
+    const urlProfile = `${this.baseUrl}/professionals/${localStorage.getItem('professional_id')}/services`;
     console.log(localStorage.getItem('auth_token'))
     const headers = {
       Authorization: `Bearer ${localStorage.getItem('auth_token')}`, //el token se envía en el header

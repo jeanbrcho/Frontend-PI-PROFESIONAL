@@ -32,17 +32,19 @@ export class PanelPerfilComponent implements OnInit {
   ) { }
 
 ngOnInit(): void {
-    const profString = localStorage.getItem('user_profile');
-    if (profString) {
-      try {
-        this.profesionalData = JSON.parse(profString) || {};
-      } catch (e) {
-        console.error('Error parseando el perfil guardado:', e);
-        this.profesionalData = {};
-      }
-    }
-    // Inicializar el borrador como copia de los datos actuales al inicio
-    this.profesionalDataDraft = { ...this.profesionalData };
+  this.authService.userProfile().subscribe({
+      next: (res) => {
+        const prof = res.data;
+        this.profesionalData = prof;
+        this.profesionalDataDraft = { ...this.profesionalData };
+      },
+      error: (err) => console.error('Error al cargar el perfil:', err), 
+      complete: () => { 
+        console.log('Perfil cargado:');
+       }
+
+  });
+   
   }
 
   toggleEditMode(): void {
