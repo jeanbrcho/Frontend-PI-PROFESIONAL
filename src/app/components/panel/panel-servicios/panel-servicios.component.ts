@@ -94,10 +94,12 @@ export class PanelServiciosComponent implements OnInit {
         });
     } else {
       // Crear nuevo servicio
-      this.serviciosService.createService({
-        professionalId: this.professionalId,
+      const dataService = {
+        idProfessional: this.professionalId,
         ...this.modalService
-      }).subscribe({
+      };
+      console.log(dataService);
+      this.serviciosService.createService(dataService).subscribe({
         next: () => this.cargarServicios(this.professionalId),
         error: (err) => console.error('Error al crear servicio:', err)
       });

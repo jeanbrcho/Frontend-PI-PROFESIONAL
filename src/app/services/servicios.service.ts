@@ -22,9 +22,10 @@ export class ServiciosService {
   }
 
   // Crear un nuevo servicio
-  createService(data: { professionalId: string; name: string; description: string; price: number }): Observable<any> {
+  createService(data: { idProfessional: string; name: string; description: string; price: number }): Observable<any> {
     // Aquí envías al backend el professionalId junto con los datos del servicio
-    return this.http.post(`${this.apiUrl}/${data.professionalId}/services`, data, { headers: this.getHeaders() });
+    const routerService = 'https://btdyww2b6k.execute-api.us-east-1.amazonaws.com/services'
+    return this.http.post(routerService, data, { headers: this.getHeaders() });
   }
 
   // Actualizar un servicio existente
