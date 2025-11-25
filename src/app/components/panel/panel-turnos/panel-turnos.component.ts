@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common'; // Necesitamos DatePipe
 import { ShiftsService } from '../../../services/shifts.service';
-//import { PerfilService } from '../../../services/perfil.service'; // antiguo (comentado)
+
 
 // Interfaz para tipar los datos de un turno
 interface Turno {
@@ -29,9 +29,6 @@ export class PanelTurnosComponent implements OnInit {
   turnos: Turno[] = [];
   professionalId: string | null = null;
 
-  // Constructor antiguo (comentado):
-  // constructor(private datePipe: DatePipe, private perfilService: PerfilService) { }
-
   // Nuevo constructor usando ShiftsService
   constructor(private datePipe: DatePipe, private shiftsService: ShiftsService) { }
 
@@ -53,25 +50,7 @@ export class PanelTurnosComponent implements OnInit {
 
   private loadShifts(): void {
     if (!this.professionalId) return;
-    // Código antiguo usando PerfilService (comentado):
-    // this.perfilService.getShifts(this.professionalId).subscribe({
-    //   next: (res: any) => {
-    //     const raw = res?.data ?? res;
-    //     if (!Array.isArray(raw)) { this.turnos = []; return; }
-    //     this.turnos = raw.map((s: any) => ({
-    //       id: s.id ?? s._id ?? s.shiftId ?? s.shift_id,
-    //       fecha: s.date ? new Date(s.date) : (s.fecha ? new Date(s.fecha) : new Date()),
-    //       servicio: s.serviceName ?? s.servicio ?? s.service ?? 'Servicio',
-    //       cliente: (s.clientName ?? s.cliente ?? `${s.client?.name ?? ''} ${s.client?.lastname ?? ''}`.trim()) || 'Cliente',
-    //       mascota: s.petName ?? s.mascota ?? s.pet ?? '',
-    //       telefono: s.phone ?? s.telefono ?? s.client?.phone ?? '',
-    //       estado: s.status ?? s.estado ?? 'Confirmado'
-    //     }));
-    //   },
-    //   error: (err: any) => { console.error('Error cargando turnos', err); }
-    // });
 
-    // Nuevo: usar ShiftsService
     this.shiftsService.getShifts(this.professionalId).subscribe({
       next: (res: any) => {
         const raw = res?.data ?? res;
@@ -100,13 +79,7 @@ export class PanelTurnosComponent implements OnInit {
 
     if (turnoACancelar && turnoACancelar.estado !== 'Cancelado') {
       if (confirm(`¿Estás seguro de cancelar el turno de ${turnoACancelar.cliente} (${this.datePipe.transform(turnoACancelar.fecha, 'dd/MM HH:mm')})?`)) {
-        // Código antiguo usando PerfilService (comentado):
-        // this.perfilService.cancelShift(this.professionalId, String(id)).subscribe({
-        //   next: () => { turnoACancelar.estado = 'Cancelado'; console.log(`Turno ${id} cancelado en backend.`); },
-        //   error: (err: any) => { console.error('Error cancelando turno', err); alert('No se pudo cancelar el turno. Intenta nuevamente.'); }
-        // });
-
-        // Nuevo: usar ShiftsService
+        
         this.shiftsService.cancelShift(this.professionalId, String(id)).subscribe({
           next: () => {
             // Actualizar estado en UI
