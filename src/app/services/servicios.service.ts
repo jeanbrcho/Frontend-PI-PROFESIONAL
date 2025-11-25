@@ -11,13 +11,29 @@ export class ServiciosService {
 
   constructor(private http: HttpClient) {}
 
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('auth_token') || '';
+    return new HttpHeaders({ Authorization: `Bearer ${token}` });
+  }
+
+  // Obtener profesional con servicios
   getProfessionalWithServices(id: string): Observable<any> {
-    const token = localStorage.getItem('auth_token');
+    return this.http.get(`${this.apiUrl}/${id}/services`, { headers: this.getHeaders() });
+  }
 
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
+  // Crear un nuevo servicio
+  createService(data: { professionalId: string; name: string; description: string; price: number }): Observable<any> {
+    // Aquí envías al backend el professionalId junto con los datos del servicio
+    return this.http.post(`${this.apiUrl}/${data.professionalId}/services`, data, { headers: this.getHeaders() });
+  }
 
-    return this.http.get(`${this.apiUrl}/${id}/services`);
+  // Actualizar un servicio existente
+  updateService(professionalId: string, serviceId: string, serviceData: { name: string; description: string; price: number }): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/${professionalId}/services/${serviceId}`, serviceData, { headers: this.getHeaders() });
+  }
+
+  // Eliminar un servicio
+  deleteService(professionalId: string, serviceId: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${professionalId}/services/${serviceId}`, { headers: this.getHeaders() });
   }
 }

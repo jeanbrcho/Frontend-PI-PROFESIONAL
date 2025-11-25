@@ -3,7 +3,7 @@
 
 
 
-  <!-- 🔑 CLAVE: El formulario usa (ngSubmit) para llamar a guardarCambios() -->
+
  <form *ngIf="isEditing" class="perfil-form" (ngSubmit)="guardarCambios()">
 
  <!--  profesionalDataDraft para evitar modificar los datos originales al editar. -->
@@ -41,7 +41,7 @@
   </div>
 
   <div class="action-buttons">
-   <!-- 🔑 CLAVE: Botón Guardar es type="submit", usa [disabled]="isSaving" y muestra el estado -->
+   
    <button type="submit" class="btn-guardar" [disabled]="isSaving">
     {{ isSaving ? 'Guardando...' : 'Guardar Cambios' }}
    </button>
