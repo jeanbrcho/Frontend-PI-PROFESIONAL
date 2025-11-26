@@ -3,10 +3,31 @@
     <div class="brand">
       <img src="logo.png" alt="Logo" class="logo">
       <h1 class="brand-title">Guau que Corte</h1>
+
+
     </div>
+
+     <ng-container *ngIf="authService.isLoggedIn(); else loginButton">
+          <button class="menu-login-btn" (click)="logout(); closeMenu()">
+            <span class="paw-icon">🐾</span> Cerrar sesión
+          </button>
+        </ng-container>
+
+        <ng-template #loginButton>
+          <a routerLink="/login" class="menu-login-btn" (click)="closeMenu()">
+            <span class="paw-icon">🐾</span> Iniciar sesión
+          </a>
+        </ng-template>
   </div>
 
+
+  
+
   <header [class.fixed]="isFixed" class="main-header">
+
+   
+
+
     <button class="hamburger" [class.active]="menuOpen" (click)="toggleMenu()" aria-label="Menu">
       <span></span>
       <span></span>
