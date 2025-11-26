@@ -2,29 +2,44 @@
 .panel-content-card {
     background-color: var(--color-fondo-principal); 
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 12px; 
     border: 1px solid var(--color-borde); 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); 
+    transition: box-shadow 0.3s ease;
 }
-
 
 .panel-content-card h2 {
     color: var(--color-texto-principal);
-    font-size: 1.8rem;
+    font-size: 2rem; 
     border-bottom: 3px solid #ff9933; 
-    padding-bottom: 10px;
-    margin-bottom: 30px;
+    padding-bottom: 12px;
+    margin-bottom: 35px; 
+    font-weight: 700;
 }
 
 
+.form-section {
+    padding: 20px 0; 
+}
 
 .perfil-form h3 {
     color: var(--color-texto-principal);
-    font-size: 1.3rem;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    font-size: 1.4rem; 
+    font-weight: 600;
+    margin-top: 0; 
+    margin-bottom: 10px;
+    border-left: 4px solid #ff9933; /* Pequeña línea de acento */
+    padding-left: 15px;
+   
 }
 
+.description-text {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    margin-bottom: 25px; 
+    padding-left: 19px; 
+    font-style: italic;
+}
 
 .form-group {
     margin-bottom: 20px;
@@ -39,303 +54,252 @@
 
 .perfil-form input[type="text"],
 .perfil-form input[type="email"],
-.perfil-form input[type="password"] {
+.perfil-form input[type="password"],
+.perfil-form textarea { /* Incluir textarea para futuros campos */
     width: 100%;
-    padding: 10px 15px;
+    padding: 12px 15px; /* Más padding para una sensación moderna */
     border: 1px solid #ced4da; 
-    border-radius: 6px;
+    border-radius: 8px; /* Ligeramente más redondeado */
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: white; /* Asegurar fondo blanco/claro */
 }
 
-
-.perfil-form input:focus {
+.perfil-form input:focus,
+.perfil-form textarea:focus {
     border-color: #ff9933;
-    box-shadow: 0 0 0 0.2rem rgba(255, 153, 51, 0.25); 
+    box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.3); /* Más visible */
     outline: none;
 }
 
 /* Input Deshabilitado (para el email no editable) */
+.perfil-form input.input-disabled,
 .perfil-form input:disabled {
-    background-color: #f8f9fa; 
+    background-color: #e9ecef; /* Un gris más notorio para indicar que no es editable */
     color: var(--color-texto-secundario);
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 
-.btn-guardar {
-    display: block;
-    width: 200px;
-    padding: 12px 20px;
-    margin-top: 30px;
-    
-   
-    background-color: #ff9933; 
-    color: white;
-    
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-guardar:hover {
-    background-color: #e68a2e; 
+hr {
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
 }
 
 
-.action-buttons {
-    margin-top: 30px;
-    display: flex;
-    gap: 15px;
-    justify-content: flex-start; 
+.section-separator {
+    border: 0;
+    border-top: 3px solid #f0f0f0; 
+    margin: 40px 0; 
 }
 
 
-.btn-editar {
-    background-color: #f8f8f8; 
-    color: #ff9933; /* Texto naranja */
-    border: 1px solid #ff9933;
-    padding: 12px 25px;
-    border-radius: 6px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 20px;;
-}
-
-.btn-editar:hover {
-    background-color: #ff9933; 
-    color: white;
-}
-
-
-
-
-/* --- ESTILOS PARA MODO LECTURA (display-data) --- */
 
 .display-data {
     margin-top: 20px;
-    /* 🔑 Quitar padding left si quieres que la línea ocupe todo */
-    padding: 10px 0; 
-    /* padding-left: 20px; <--- Remueve esto */
+    padding: 10px 0;
 }
 
+/* Contenedor de la categoría de la vista */
+.display-category {
+    margin-bottom: 30px; /* Separación después de cada grupo de información */
+    padding: 10px 0;
+}
+
+/* Estilo para los títulos de las categorías en modo vista (lo que se veía feo) */
+.display-category h3 {
+   color: var(--color-texto-principal);
+    font-size: 1.4rem; 
+    font-weight: 600;
+    margin-top: 0; 
+    margin-bottom: 10px;
+    border-left: 4px solid #ff9933; /* Pequeña línea de acento */
+    padding-left: 15px;
+}
+
+/* Asegura que los grupos de datos se vean bien */
 .display-group {
     display: flex;
-    padding: 15px 20px; /* 🔑 Más padding vertical y horizontal para aire */
+    padding: 15px 20px;
     border-bottom: 1px solid var(--color-borde); 
     align-items: center;
     transition: background-color 0.2s; 
 }
 
-/* 🔑 Efecto de resaltar la fila al pasar el ratón */
-.display-group:hover {
-    background-color: var(--color-fondo-panel-lateral); /* Un gris muy sutil de tu paleta */
-}
+
 
 .display-group:last-child {
     border-bottom: none; 
 }
 
 .display-group .label {
-    font-weight: 700; /* Un poco más de peso */
-    color: var(--color-texto-secundario); /* 🔑 Color secundario para diferenciarse del valor */
-    width: 250px; /* Más ancho para las etiquetas */
+    font-weight: 600; 
+    color: var(--color-texto-principal);
+    width: 200px; 
     flex-shrink: 0;
     margin-right: 30px;
 }
 
 .display-group .value {
     color: var(--color-texto-principal);
-    font-size: 1.1rem; /* Un poco más grande */
+    font-size: 1.05rem; 
     font-weight: 500;
     flex-grow: 1; 
 }
 
-/* --- ESTILOS PARA EL BOTÓN EDITAR --- */
+
 .action-buttons {
-    margin-top: 30px;
+    margin-top: 35px;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start; 
 }
 
-.btn-editar {
-    background-color: #f8f8f8; 
-    color: #ff9933; 
-    border: 1px solid #ff9933;
-    padding: 12px 25px;
-    border-radius: 6px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-  
-    box-shadow: 0 2px 4px rgba(255, 153, 51, 0.2); 
-}
-
-.btn-editar:hover {
-    background-color: #ff9933; 
-    color: white;
-}
-/* --- ESTILOS DEL BOTÓN CANCELAR --- */
-
+.btn-guardar,
 .btn-cancelar {
     
-    background-color: rgb(243, 47, 96); 
-    color: #f3dcdf; 
-    border: 1px solid #dc3545; /* Borde rojo */
-    display: block;
-    width: 200px;
-    padding: 12px 20px;
-    margin-top: 30px;
+    padding: 12px 25px;
     font-size: 1rem;
-    border-radius: 6px;
     font-weight: 700;
-    cursor: default;
-    transition: all 0.2s;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+}
+
+/* Botón Primario: Guardar */
+.btn-guardar {
+    background-color: #ff9933; 
+    color: white;
+    border: none;
+    box-shadow: 0 4px 6px rgba(255, 153, 51, 0.3);
+}
+
+.btn-guardar:hover {
+    background-color: #e68a2e; 
+    box-shadow: 0 6px 8px rgba(255, 153, 51, 0.4);
+}
+
+.btn-guardar:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Botón Secundario: Cancelar */
+.btn-cancelar {
+    background-color: #dc3545; 
+    color: white;
+    border: 1px solid #ced4da;
 }
 
 .btn-cancelar:hover {
-    background-color: #dc3545; /* Invertir color al pasar el mouse */
-    color: white;
+    background-color: #c82333;
+    transform: translateY(-1px);
 }
 
-/* RESPONSIVE */
-
-/* Tablets */
-@media (max-width: 992px) {
-  .panel-content-card {
-    padding: 30px;
-  }
-
-  .panel-content-card h2 {
-    font-size: 1.5rem;
-  }
-
-  .display-group .label {
-    width: 200px;
-    margin-right: 20px;
-  }
-
-  .display-group .value {
-    font-size: 1rem;
-  }
-}
-
-/* Móviles */
-@media (max-width: 768px) {
-  .panel-content-card {
-    padding: 20px;
-  }
-
-  .panel-content-card h2 {
-    font-size: 1.2rem;
-    text-align: center;
-  }
-
-  /* Cambiar diseño de display-group a tarjetas */
-  .display-group {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-    background-color: var(--color-fondo-secundario);
-    border-radius: 8px;
-    margin-bottom: 10px;
-    border: 1px solid var(--color-borde);
-  }
-
-  .display-group .label {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    color: var(--color-texto-secundario);
-  }
-
-  .display-group .value {
-    font-size: 1rem;
+/* Botón Editar (Modo Vista) */
+.btn-editar {
+    background-color: var(--color-acento-marca);
+    color: var(--color-fondo-navbar);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
     font-weight: 600;
-  }
-
-  /* Botones en formulario */
-  .action-buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .btn-guardar,
-  .btn-cancelar {
-    width: 100%;
-  }
-
-  .btn-editar {
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  /* Formulario en móvil */
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  .form-group label {
-    font-size: 0.9rem;
-  }
-
-  .perfil-form input {
-    padding: 12px;
-    font-size: 1rem;
-  }
+    font-size: medium;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
-/* iPhone SE y pantallas muy pequeñas (375px) */
-@media (max-width: 375px) {
-  .panel-content-card {
-    padding: 15px;
-  }
+.btn-editar:hover {
+     background-color: var(--color-acento-hover);
+    transform: translateY(-1px);
+}
 
-  .panel-content-card h2 {
-    font-size: 1.1rem;
-  }
 
-  .display-group {
-    padding: 12px;
-    margin-bottom: 8px;
-  }
+.contenedor-direccion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-  .display-group .label {
-    font-size: 0.8rem;
-    margin-bottom: 4px;
-  }
+.direccion-fila {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
-  .display-group .value {
-    font-size: 0.95rem;
-  }
+.campo {
+  display: flex;
+  flex-direction: column;
+}
 
-  .btn-editar {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
+.campo-pequeño input {
+  width: 80px;
+}
 
-  .form-group {
-    margin-bottom: 12px;
-  }
 
-  .form-group label {
-    font-size: 0.85rem;
-  }
+/* --- RESPONSIVE --- */
 
-  .perfil-form input {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
+/* Adaptaciones para celulares */
+@media (max-width: 768px) {
+    .panel-content-card {
+        padding: 20px;
+    }
 
-  .btn-guardar,
-  .btn-cancelar {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
+    
+    .display-group {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+        margin-bottom: 10px;
+        border: 1px solid #f0f0f0; /* Borde sutil para simular tarjeta */
+        border-radius: 6px;
+    }
+    
+    .display-group .label {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 5px;
+        font-size: 0.85rem;
+        color: #777;
+    }
 
-  .action-buttons {
-    gap: 8px;
-  }
+    .display-group .value {
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+    /* Botones de acción en columna */
+    .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .btn-guardar,
+    .btn-cancelar,
+    .btn-editar {
+        width: 100%;
+        min-width: auto;
+        padding: 10px;
+    }
+
+    /* Títulos */
+    .panel-content-card h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .perfil-form h3 {
+        font-size: 1.2rem;
+        padding-left: 10px;
+    }
+    
+    .section-separator {
+        margin: 30px 0;
+    }
 }

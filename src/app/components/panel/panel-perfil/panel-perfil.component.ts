@@ -26,9 +26,12 @@ export class PanelPerfilComponent implements OnInit {
   // 🔑 ESTADO: Aquí se guarda el mensaje de éxito o error para mostrarlo en el HTML
   message: string | null = null; 
 
+
+  
+
   constructor(
     private authService: AuthService,
-    private perfilService: PerfilService // 🔑 Inyectamos el servicio
+    private perfilService: PerfilService //  Inyectamos el servicio
   ) { }
 
 ngOnInit(): void {
@@ -41,7 +44,7 @@ ngOnInit(): void {
       error: (err) => console.error('Error al cargar el perfil:', err), 
       complete: () => { 
         console.log('Perfil cargado:');
-       }
+             }
 
   });
    
@@ -64,6 +67,8 @@ guardarCambios(): void {
     this.isSaving = true;
     this.message = null; 
 
+    
+
     // Verificación de seguridad: necesitamos el ID para saber qué registro actualizar
     if (!this.profesionalDataDraft.id) {
         this.message = 'Error: Falta el ID del profesional para actualizar.';
@@ -71,7 +76,9 @@ guardarCambios(): void {
         return;
     }
     
-    // 🔑 CLAVE: Llamada al servicio PerfilService (que usa la API)
+    //  Llamada al servicio PerfilService (que usa la API)
+    console.log('DATA QUE ESTOY ENVIANDO', this.profesionalDataDraft.value);
+
     this.perfilService.updateProfile(this.profesionalDataDraft).subscribe({
         
         next: (respuesta) => {
