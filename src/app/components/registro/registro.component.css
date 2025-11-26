@@ -222,22 +222,117 @@ label {
 
 @media (max-width: 768px) {
   /* en móvil apilamos: formulario arriba, imagen oculta */
+  .register-page-container {
+    padding: 20px 15px;
+    gap: 30px;
+  }
+
   .section-wrapper,
   .section-wrapper.reverse {
     flex-direction: column;
     gap: 18px;
+    max-width: 100%;
   }
 
   .login-image-side {
     display: none;
   }
 
+  .login-card {
+    padding: 30px 20px;
+  }
+
+  .login-titulo-principal {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .login-subtitulo {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
   .form-row {
     flex-direction: column;
+    gap: 0;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-control {
+    padding: 12px 15px;
+    font-size: 16px; /* Evita zoom automático en iOS */
   }
 
   .button-container {
     padding: 0 20px;
+    margin-top: 20px;
+  }
+
+  .boton {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+
+  .error-message {
+    font-size: 11px;
+    margin-top: 4px;
+  }
+}
+
+/* iPhone SE y pantallas muy pequeñas (375px) */
+@media (max-width: 375px) {
+  .register-page-container {
+    padding: 15px 10px;
+    gap: 25px;
+  }
+
+  .login-card {
+    padding: 25px 15px;
+  }
+
+  .login-titulo-principal {
+    font-size: 22px;
+  }
+
+  .login-subtitulo {
+    font-size: 13px;
+  }
+
+  .form-control {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .boton {
+    padding: 14px 18px;
+    font-size: 15px;
+  }
+
+  .error-message {
+    font-size: 10px;
+  }
+
+  .loading-overlay .spinner {
+    width: 50px;
+    height: 50px;
+    border-width: 5px;
+  }
+
+  .loading-overlay p {
+    font-size: 16px;
   }
 }
 
@@ -266,3 +361,42 @@ label {
 .login-card {
   padding-bottom: 50px;
 }
+
+/* Fondo oscuro transparente que bloquea la pantalla */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Spinner circular */
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #007bff; /* Color del spinner */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+/* Animación de giro */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+

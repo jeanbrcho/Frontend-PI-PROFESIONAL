@@ -1,86 +1,237 @@
 <div class="panel-content-card">
-  <h2>👤 Mi Perfil</h2>
+    <h2>👤 Mi Perfil</h2>
 
+    <div><button type="button" class="btn-editar" (click)="toggleEditMode()"> Editar Perfil</button></div>
+    <!-- MODO EDICIÓN -->
+    
+    <form *ngIf="isEditing" class="perfil-form" (ngSubmit)="guardarCambios()">
 
+    
+        <!--   DATOS PERSONALES -->
+        
+        <div class="form-section">
+            <h3>Datos Personales</h3>
+            <p class="description-text">Información básica y contacto.</p>
 
-  <!-- 🔑 CLAVE: El formulario usa (ngSubmit) para llamar a guardarCambios() -->
- <form *ngIf="isEditing" class="perfil-form" (ngSubmit)="guardarCambios()">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" [(ngModel)]="profesionalDataDraft.name" [disabled]="!isEditing" required>
+            </div>
 
- <!--  profesionalDataDraft para evitar modificar los datos originales al editar. -->
- <div class="form-group">
-   <label for="name">Nombre:</label>
- <input type="text" id="name" name="name" [(ngModel)]="profesionalDataDraft.name" [disabled]="!isEditing" required>
+            <div class="form-group">
+                <label for="lastname">Apellido:</label>
+                <input type="text" id="lastname" name="lastname" [(ngModel)]="profesionalDataDraft.lastname" [disabled]="!isEditing" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+               
+                <input type="email" id="email" name="email" [(ngModel)]="profesionalDataDraft.email" [disabled]="!isEditing" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Teléfono:</label>
+                <input type="text" id="phone" name="phone" [(ngModel)]="profesionalDataDraft.phone" [disabled]="!isEditing" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <!-- DNI sigue siendo de solo lectura -->
+                <input type="text" id="dni" name="dni" [(ngModel)]="profesionalDataDraft.dni" disabled class="input-disabled">
+            </div>
+
+            <div class="form-group">
+                <label for="license">Licencia / Matrícula:</label>
+                <!-- Licencia sigue siendo de solo lectura -->
+                <input type="text" id="license" name="license" [(ngModel)]="profesionalDataDraft.license" disabled class="input-disabled">
+            </div>
+        </div>
+
+        <hr class="section-separator">
+
+        
+        <!-- DATOS PROFESIONALES -->
+        
+        <div class="form-section">
+            <h3>Datos Profesionales y Licencia</h3>
+            <p class="description-text">Estos datos están asociados a tu negocio.</p>
+            
+            <div class="form-group">
+                <label for="nameEstablishment">Nombre del establecimiento:</label>
+                <input type="text" id="nameEstablishment" name="nameEstablishment" [(ngModel)]="profesionalDataDraft.nameEstablishment" [disabled]="!isEditing" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="biography" > Biografía:</label>
+                <input type="text" id="biography" name="biography" [(ngModel)]="profesionalDataDraft.biography" [disabled]="!isEditing" required>
+            </div>
+
+            <div class="form-group">
+                <label for="specialty">Especialidad:</label>
+                <input type="text" id="specialty" name="specialty" [(ngModel)]="profesionalDataDraft.specialty" [disabled]="!isEditing" required>
+            </div>
+
+            <div class="form-group">
+  <label>Dirección:</label>
+
+  <div class="contenedor-direccion">
+
+    <!-- Fila 1 -->
+    <div class="direccion-fila">
+      <div class="campo">
+        <label for="street">Calle:</label>
+        <input
+          type="text"
+          id="street"
+          name="street"
+          [(ngModel)]="profesionalDataDraft.street"
+          required
+        >
+      </div>
+
+      <div class="campo campo-pequeño">
+        <label for="number">Número:</label>
+        <input
+          type="text"
+          id="number"
+          name="number"
+          [(ngModel)]="profesionalDataDraft.streetNumber"
+          required
+        >
+      </div>
+    </div>
+
+    <!-- Fila 2 -->
+    <div class="direccion-fila">
+      <div class="campo">
+        <label for="city">Ciudad:</label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          [(ngModel)]="profesionalDataDraft.neighborhood"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="province">Provincia:</label>
+        <input
+          type="text"
+          id="province"
+          name="province"
+          [(ngModel)]="profesionalDataDraft.province"
+          required
+        >
+      </div>
+
+      <div class="campo campo-pequeño">
+        <label for="postalCode">Código Postal:</label>
+        <input
+          type="text"
+          id="postalCode"
+          name="postalCode"
+          [(ngModel)]="profesionalDataDraft.postalCode"
+          required
+        >
+      </div>
+    </div>
+
   </div>
+</div>
+<!-- fin direccion-->
+        
+    
 
-  <div class="form-group">
- <label for="lastname">Apellido:</label>
- <input type="text" id="lastname" name="lastname" [(ngModel)]="profesionalDataDraft.lastname" [disabled]="!isEditing" required>
- </div>
 
-  <div class="form-group">
-   <label for="email">Email:</label>
-   <!-- Email es solo lectura -->
-   <input type="email" id="email" name="email" [(ngModel)]="profesionalDataDraft.email" [disabled]="!isEditing" required>
-  </div>
+            
+        </div>
 
-  <div class="form-group">
-   <label for="phone">Teléfono:</label>
-   <input type="text" id="phone" name="phone" [(ngModel)]="profesionalDataDraft.phone" [disabled]="!isEditing" required>
-  </div>
+        <hr>
 
-  <div class="form-group">
-   <label for="dni">DNI:</label>
-   <!-- DNI es solo lectura -->
-   <input type="text" id="dni" name="dni" [(ngModel)]="profesionalDataDraft.dni" disabled class="input-disabled">
-  </div>
+        <div class="action-buttons">
+            <button type="submit" class="btn-guardar" [disabled]="isSaving">
+                {{ isSaving ? 'Guardando...' : 'Guardar Cambios' }}
+            </button>
+            <button type="button" class="btn-cancelar" (click)="toggleEditMode()">Cancelar</button>
+        </div>
+    </form>
 
-  <div class="form-group">
-   <label for="license">Licencia:</label>
-   <!-- Licencia es solo lectura -->
-   <input type="text" id="license" name="license" [(ngModel)]="profesionalDataDraft.license" disabled class="input-disabled">
-  </div>
+    
+    <!-- MODO VISTA -->
+    
+    <div *ngIf="!isEditing" class="display-data">
 
-  <div class="action-buttons">
-   <!-- 🔑 CLAVE: Botón Guardar es type="submit", usa [disabled]="isSaving" y muestra el estado -->
-   <button type="submit" class="btn-guardar" [disabled]="isSaving">
-    {{ isSaving ? 'Guardando...' : 'Guardar Cambios' }}
-   </button>
-   <!-- El botón Cancelar llama a toggleEditMode para salir de la edición sin guardar -->
-   <button type="button" class="btn-cancelar" (click)="toggleEditMode()">Cancelar</button>
-  </div>
- </form>
+        
+        <!-- DATOS PERSONALES -->
+        
+        <div class="display-category">
+            <h3>Datos Personales</h3>
+            
+            <div class="display-group">
+                <span class="label">Nombre Completo:</span>
+                <span class="value">{{ profesionalData.name }} {{ profesionalData.lastname }}</span>
+            </div>
 
- <!-- ============================================= -->
- <!-- MODO VISTA (No editable) -->
- <!-- ============================================= -->
- <div *ngIf="!isEditing" class="display-data">
-  
-  
-  <div class="display-group">
-   <span class="label">Nombre Completo:</span>
-   <span class="value">{{ profesionalData.name }} {{ profesionalData.lastname }}</span>
-  </div>
+            <div class="display-group">
+                <span class="label">Email:</span>
+                <span class="value">{{ profesionalData.email }}</span>
+            </div>
 
-  <div class="display-group">
-   <span class="label">Email:</span>
-   <span class="value">{{ profesionalData.email }}</span>
-  </div>
+            <div class="display-group">
+                <span class="label">Teléfono:</span>
+                <span class="value">{{ profesionalData.phone }}</span>
+            </div>
 
-  <div class="display-group">
-   <span class="label">Teléfono:</span>
-   <span class="value">{{ profesionalData.phone }}</span>
-  </div>
-  
-  <div class="display-group">
-   <span class="label">DNI:</span>
-   <span class="value">{{ profesionalData.dni }}</span>
-  </div>
-  
-  <div class="display-group">
-   <span class="label">Licencia:</span>
-   <span class="value">{{ profesionalData.license }}</span>
-  </div>
+            <div class="display-group">
+                <span class="label">DNI:</span>
+                <span class="value">{{ profesionalData.dni }}</span>
+            </div>
+            
+            <div class="display-group">
+                <span class="label">Licencia / Matrícula:</span>
+                <span class="value">{{ profesionalData.license }}</span>
+            </div>
 
-  <button type="button" class="btn-editar" (click)="toggleEditMode()">✏️ Editar Perfil</button>
- </div>
+
+
+        </div> <!-- div de fin de categortia-->
+
+        
+
+        <hr class="section-separator">
+        
+        
+        <!--  DATOS DEL PROFESIONAL -->
+        
+        <div class="display-category">
+            <h3>Datos Profesionales</h3>
+
+            <div class="display-group">
+                <span class="label">Nombre del Establecimiento:</span>
+                <span class="value">{{ profesionalData.nameEstablishment }}</span>  
+            </div>
+
+            <div class="display-group">
+                <span class="label">Especialidad:</span>
+                <span class="value">{{ profesionalData.specialty }}</span>
+            </div>
+            
+
+            <div class="display-group">
+            <span class="label">Dirección:</span>
+           
+            <span class="value">
+                {{ profesionalData.street }} {{ profesionalData.streetNumber }} <br>
+                {{ profesionalData.neighborhood }}, {{ profesionalData.province }} ({{ profesionalData.postalCode }})
+            </span>
+        </div>
+    </div>
+            
+        
+        
+        <hr>
+
+        
+    </div>
 </div>

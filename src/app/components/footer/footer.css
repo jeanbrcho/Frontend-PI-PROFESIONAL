@@ -80,34 +80,88 @@
     
 }
 
-/* RESPONSIVE * 
+/* RESPONSIVE */
 
-/* Tabletas y pantallas medianas */
+/* Tabletas */
 @media (max-width: 992px) {
     .footer-container {
-       grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         margin: 0 20px;
+        gap: 30px;
     }
-    .footer-col:nth-child(2), 
-    .footer-col:nth-child(4) {
-        margin-top: 40px;
+    
+    .brand-col {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #444444;
+    }
+    
+    .footer-logo {
+        width: 150px;
+        margin-top: 15px;
+    }
+    
+    .social-links {
+        justify-content: center;
+        margin-top: 15px;
     }
 }
 
-/* Celulares  */
-@media (max-width: 576px) {
+/* Móviles */
+@media (max-width: 768px) {
+    .app-footer {
+        padding-top: 20px;
+    }
+    
     .footer-container {
-       grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
         padding-bottom: 20px;
+        margin: 0 10px;
+        gap: 0;
     }
+    
+    .brand-col {
+        padding-bottom: 15px;
+    }
+    
+    .brand-col .brand-title {
+        font-size: 1.3em;
+    }
+    
+    .footer-logo {
+        width: 120px;
+    }
+    
     .footer-col {
-        padding: 0 15px;
-        margin-bottom: 30px;
+        padding: 15px 20px;
+        margin-bottom: 0;
         border-bottom: 1px dashed #444444; 
-        padding-bottom: 20px;
     }
+    
     .footer-col:last-child {
         border-bottom: none;
-        margin-bottom: 0;
+    }
+    
+    .footer-col h4 {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+    }
+    
+    .footer-col ul li {
+        margin-bottom: 8px;
+    }
+    
+    .footer-col a {
+        font-size: 0.9em;
+    }
+    
+    .social-links a {
+        font-size: 1.3em;
+    }
+    
+    .footer-bottom {
+        font-size: 0.75em;
+        padding: 8px 0;
     }
 }
