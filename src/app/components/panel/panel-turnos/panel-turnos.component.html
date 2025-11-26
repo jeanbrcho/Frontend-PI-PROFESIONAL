@@ -2,6 +2,7 @@
     <h2>📅 Próximos Turnos Agendados</h2>
     <p>Revisa y gestiona los turnos confirmados por tus clientes. Puedes cancelar un turno si es necesario.</p>
 
+    <!-- Vista de tabla para desktop/tablet -->
     <div class="table-responsive">
         <table>
             <thead>
@@ -47,6 +48,43 @@
                 </tr>
             </tbody>
         </table>
+        
+        <div *ngIf="turnos.length === 0" class="no-data">
+            <p>🎉 No tienes turnos agendados por el momento.</p>
+        </div>
+    </div>
+
+    <!-- Vista de tarjetas para móvil -->
+    <div class="mobile-turnos">
+        <div class="turno-card" *ngFor="let turno of turnos">
+            <div class="turno-header">
+                <div class="date-time">
+                    <div class="date">{{ turno.fecha | date:'EEE d MMM' }}</div>
+                    <div class="time">{{ turno.fecha | date:'HH:mm' }} hs</div>
+                </div>
+                <span class="status-badge" [ngClass]="getEstadoClass(turno.estado)">
+                    {{ turno.estado }}
+                </span>
+            </div>
+            
+            <div class="turno-info">
+                <p><strong>Servicio:</strong> {{ turno.servicio }}</p>
+                <p><strong>Cliente:</strong> {{ turno.cliente }}</p>
+                <p><strong>Mascota:</strong> {{ turno.mascota }}</p>
+                <p><strong>Teléfono:</strong> {{ turno.telefono }}</p>
+            </div>
+            
+            <div class="turno-actions">
+                <button 
+                    *ngIf="turno.estado !== 'Cancelado'"
+                    (click)="cancelarTurno(turno.id)"
+                    class="btn-action btn-cancelar-turno"
+                >
+                    🚫 Cancelar Turno
+                </button>
+                <span *ngIf="turno.estado === 'Cancelado'">❌ Turno Cancelado</span>
+            </div>
+        </div>
         
         <div *ngIf="turnos.length === 0" class="no-data">
             <p>🎉 No tienes turnos agendados por el momento.</p>
