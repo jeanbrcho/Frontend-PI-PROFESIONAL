@@ -211,3 +211,205 @@ table th:nth-child(1), table td:nth-child(1) {
     display: inline-flex;
     justify-content: center;
 }
+
+/* RESPONSIVE */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .panel-content-card {
+    padding: 30px;
+  }
+
+  .header-with-button {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .header-with-button h2 {
+    font-size: 1.5rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  thead th {
+    padding: 12px 10px;
+  }
+
+  tbody td {
+    padding: 12px 10px;
+  }
+
+  .modal {
+    width: 500px;
+    padding: 25px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .panel-content-card {
+    padding: 20px;
+  }
+
+  .header-with-button h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .btn-agregar {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  /* Ocultar tabla en móvil y mostrar tarjetas */
+  .table-responsive {
+    display: none;
+  }
+
+  .mobile-cards {
+    display: block;
+  }
+
+  .service-card {
+    background-color: var(--color-fondo-secundario);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .service-card h3 {
+    color: var(--color-acento-marca);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .service-card p {
+    color: var(--color-texto-principal);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+
+  .service-card .price {
+    font-weight: bold;
+    color: var(--color-acento-marca);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .service-card .actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .service-card .btn-action {
+    flex: 1;
+    padding: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .modal {
+    width: 95%;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .modal h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-buttons .btn-action {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Mostrar tarjetas solo en móvil */
+.mobile-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-cards {
+    display: block;
+  }
+}
+
+/* iPhone SE y pantallas muy pequeñas (375px) */
+@media (max-width: 375px) {
+  .panel-content-card {
+    padding: 15px;
+  }
+
+  .header-with-button h2 {
+    font-size: 1.1rem;
+  }
+
+  .btn-agregar {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .service-card {
+    padding: 15px;
+    margin-bottom: 12px;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+
+  .service-card .price {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .service-card .actions {
+    gap: 8px;
+  }
+
+  .service-card .btn-action {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .modal {
+    width: 98%;
+    padding: 15px;
+    margin: 5px;
+  }
+
+  .modal h3 {
+    font-size: 1.1rem;
+  }
+
+  .modal input,
+  .modal textarea {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .modal-buttons .btn-action {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}

@@ -114,3 +114,194 @@ tbody td {
     font-size: 1.1rem;
     color: #888;
 }
+
+/* Tablets */
+@media (max-width: 992px) {
+  .panel-content-card {
+    padding: 30px; /* Reducir el padding */
+  }
+
+  .panel-content-card h2 {
+    font-size: 1.5rem; /* Reducir el tamaño del título */
+  }
+
+  table {
+    font-size: 0.9rem; /* Ajustar el tamaño de fuente de la tabla */
+  }
+
+  thead th {
+    padding: 12px 10px; /* Reducir el padding de las celdas */
+  }
+
+  tbody td {
+    padding: 12px 10px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .panel-content-card {
+    padding: 20px; /* Reducir aún más el padding */
+  }
+
+  .panel-content-card h2 {
+    font-size: 1.2rem; /* Reducir el tamaño del título para móviles */
+    text-align: center; /* Centrar el título */
+  }
+
+  .table-responsive {
+    overflow-x: scroll; /* Asegurar que la tabla sea desplazable horizontalmente */
+  }
+
+  table {
+    font-size: 0.85rem; /* Reducir el tamaño de fuente de la tabla */
+  }
+
+  thead th {
+    padding: 10px 8px; /* Reducir el padding de las celdas */
+  }
+
+  tbody td {
+    padding: 10px 8px;
+  }
+
+  .btn-action {
+    padding: 6px 10px; /* Reducir el tamaño de los botones */
+    font-size: 0.8rem;
+  }
+
+  .no-data {
+    font-size: 1rem; /* Ajustar el tamaño del texto sin datos */
+  }
+
+  /* Ocultar tabla en móvil y mostrar tarjetas */
+  .table-responsive {
+    display: none;
+  }
+
+  .mobile-turnos {
+    display: block;
+  }
+
+  .turno-card {
+    background-color: var(--color-fondo-secundario);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .turno-card .turno-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .turno-card .date-time {
+    text-align: left;
+  }
+
+  .turno-card .date-time .date {
+    font-weight: 600;
+    color: var(--color-texto-principal);
+    font-size: 0.9rem;
+  }
+
+  .turno-card .date-time .time {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ff9933;
+  }
+
+  .turno-card .status-badge {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  .turno-card .turno-info {
+    margin-bottom: 15px;
+  }
+
+  .turno-card .turno-info p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+
+  .turno-card .turno-info strong {
+    color: var(--color-acento-marca);
+  }
+
+  .turno-card .turno-actions {
+    text-align: center;
+  }
+
+  .turno-card .btn-action {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* Mostrar tarjetas solo en móvil */
+.mobile-turnos {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-turnos {
+    display: block;
+  }
+}
+
+/* iPhone SE y pantallas muy pequeñas (375px) */
+@media (max-width: 375px) {
+  .panel-content-card {
+    padding: 15px;
+  }
+
+  .panel-content-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .turno-card {
+    padding: 15px;
+    margin-bottom: 12px;
+  }
+
+  .turno-card .turno-header {
+    margin-bottom: 12px;
+  }
+
+  .turno-card .date-time .date {
+    font-size: 0.8rem;
+  }
+
+  .turno-card .date-time .time {
+    font-size: 1.1rem;
+  }
+
+  .turno-card .status-badge {
+    font-size: 0.75rem;
+    padding: 3px 6px;
+  }
+
+  .turno-card .turno-info {
+    margin-bottom: 12px;
+  }
+
+  .turno-card .turno-info p {
+    margin: 4px 0;
+    font-size: 0.85rem;
+  }
+
+  .turno-card .btn-action {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .no-data {
+    padding: 30px 0;
+    font-size: 0.9rem;
+  }
+}

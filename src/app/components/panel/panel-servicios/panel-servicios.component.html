@@ -7,6 +7,7 @@
     <button class="btn-agregar" (click)="abrirModal()">➕ Agregar Servicio</button>
   </div>
 
+  <!-- Vista de tabla para desktop/tablet -->
   <div class="table-responsive">
     <table>
       <thead>
@@ -35,6 +36,22 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- Vista de tarjetas para móvil -->
+  <div class="mobile-cards">
+    <div class="service-card" *ngFor="let service of servicios">
+      <h3>{{ service.name }}</h3>
+      <p>{{ service.description }}</p>
+      <div class="price">$ {{ service.price }}</div>
+      <div class="actions">
+        <button (click)="abrirModal(service)" class="btn-action btn-confirmar">✏️ Editar</button>
+        <button (click)="abrirConfirmDelete(service)" class="btn-action btn-cancelar">🗑️ Eliminar</button>
+      </div>
+    </div>
+    <div *ngIf="servicios.length === 0" class="no-data">
+      <p>No hay servicios registrados.</p>
+    </div>
   </div>
 
   <!-- Modal de Agregar / Editar -->

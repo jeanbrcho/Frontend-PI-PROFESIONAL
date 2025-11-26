@@ -198,3 +198,144 @@
     background-color: #dc3545; /* Invertir color al pasar el mouse */
     color: white;
 }
+
+/* RESPONSIVE */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .panel-content-card {
+    padding: 30px;
+  }
+
+  .panel-content-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .display-group .label {
+    width: 200px;
+    margin-right: 20px;
+  }
+
+  .display-group .value {
+    font-size: 1rem;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .panel-content-card {
+    padding: 20px;
+  }
+
+  .panel-content-card h2 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  /* Cambiar diseño de display-group a tarjetas */
+  .display-group {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    background-color: var(--color-fondo-secundario);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--color-borde);
+  }
+
+  .display-group .label {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+  }
+
+  .display-group .value {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* Botones en formulario */
+  .action-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-guardar,
+  .btn-cancelar {
+    width: 100%;
+  }
+
+  .btn-editar {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  /* Formulario en móvil */
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .perfil-form input {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+/* iPhone SE y pantallas muy pequeñas (375px) */
+@media (max-width: 375px) {
+  .panel-content-card {
+    padding: 15px;
+  }
+
+  .panel-content-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .display-group {
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+
+  .display-group .label {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+
+  .display-group .value {
+    font-size: 0.95rem;
+  }
+
+  .btn-editar {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .perfil-form input {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .btn-guardar,
+  .btn-cancelar {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .action-buttons {
+    gap: 8px;
+  }
+}

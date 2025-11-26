@@ -174,3 +174,185 @@
     color: white;
     border-color: #333333;
 }
+
+/* RESPONSIVE */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .seccion-planes {
+    padding: 60px 4%;
+  }
+
+  .titulo-seccion-planes {
+    font-size: 32px;
+  }
+
+  .texto-seccion-planes {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .contenedor-planes {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .tarjeta-plan {
+    padding: 35px;
+    max-width: 320px;
+  }
+
+  .nombre-plan {
+    font-size: 22px;
+  }
+
+  .monto {
+    font-size: 42px;
+  }
+
+  .plan-destacado {
+    transform: scale(1.05);
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .seccion-planes {
+    padding: 50px 3%;
+  }
+
+  .titulo-seccion-planes {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .texto-seccion-planes {
+    font-size: 15px;
+    margin-bottom: 35px;
+  }
+
+  .contenedor-planes {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .tarjeta-plan {
+    max-width: 95%;
+    width: 95%;
+    padding: 25px 20px;
+    margin: 0 auto;
+  }
+
+  .plan-destacado {
+    transform: none;
+    order: -1; /* Mostrar primero en móvil */
+    max-width: 95%;
+    width: 95%;
+  }
+
+  .nombre-plan {
+    font-size: 20px;
+  }
+
+  .monto {
+    font-size: 36px;
+  }
+
+  .frecuencia {
+    font-size: 14px;
+  }
+
+  .resumen-plan {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .lista-beneficios {
+    margin-bottom: 25px;
+  }
+
+  .lista-beneficios li {
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  .boton-primario,
+  .boton-terciario {
+    padding: 12px 25px;
+    font-size: 14px;
+  }
+
+  .etiqueta-destacado {
+    top: 15px;
+    right: 15px;
+    left: auto;
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+}
+
+/* iPhone SE y pantallas muy pequeñas (375px) */
+@media (max-width: 375px) {
+  .seccion-planes {
+    padding: 40px 2%;
+  }
+
+  .titulo-seccion-planes {
+    font-size: 24px;
+  }
+
+  .texto-seccion-planes {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .tarjeta-plan {
+    padding: 20px 15px;
+    max-width: 90%;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .nombre-plan {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .monto {
+    font-size: 28px;
+  }
+
+  .frecuencia {
+    font-size: 13px;
+  }
+
+  .resumen-plan {
+    font-size: 12px;
+    margin-bottom: 18px;
+    min-height: 30px;
+  }
+
+  .lista-beneficios {
+    margin-bottom: 20px;
+  }
+
+  .lista-beneficios li {
+    padding: 6px 0;
+    font-size: 13px;
+  }
+
+  .boton-primario,
+  .boton-terciario {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .etiqueta-destacado {
+    font-size: 10px;
+    padding: 3px 10px;
+    top: 10px;
+    right: 10px;
+  }
+}

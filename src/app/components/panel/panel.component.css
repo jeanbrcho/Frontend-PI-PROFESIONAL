@@ -55,7 +55,6 @@
 
 
 .sidebar-nav ul li.logout-item a {
-    
     color: #dc3545; 
     font-weight: 700;
     padding: 15px 20px; 
@@ -71,4 +70,137 @@
 .panel-content {
     flex-grow: 1; 
     padding: 30px;
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .panel-dashboard-wrapper {
+    grid-template-columns: 200px 1fr; /* Reducir el tamaño del sidebar */
+    padding: 20px 30px;
+    gap: 20px;
+  }
+
+  .panel-sidebar {
+    width: 200px;
+  }
+
+  .sidebar-nav li a {
+    padding: 12px 15px; /* Reducir el padding de los enlaces */
+    font-size: 14px; /* Ajustar el tamaño de fuente */
+  }
+
+  .sidebar-nav li.logout-item a {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  /* Mostrar botón de cerrar sesión en tablets */
+  .desktop-only {
+    display: block;
+  }
+
+  .panel-content {
+    padding: 20px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .panel-dashboard-wrapper {
+    grid-template-columns: 1fr; /* Hacer que el sidebar se apile encima del contenido */
+    padding: 15px 20px;
+  }
+
+  .panel-sidebar {
+    width: 100%;
+    border-right: none; /* Eliminar el borde derecho */
+    border-bottom: 1px solid var(--color-borde); /* Agregar un borde inferior */
+    padding: 10px 0;
+  }
+
+  .sidebar-nav li a {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+
+  .panel-content {
+    padding: 15px;
+  }
+
+  /* Navegación horizontal en móvil */
+  .sidebar-nav ul {
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+    padding: 10px 0;
+  }
+
+  .sidebar-nav li {
+    flex-shrink: 0;
+  }
+
+  .sidebar-nav li a {
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 11px;
+    border-radius: 20px;
+    border: 1px solid var(--color-borde);
+  }
+
+  .sidebar-nav li.active a {
+    border-left: none;
+    padding-left: 12px;
+    background-color: var(--color-acento-marca);
+    color: white;
+    border-color: var(--color-acento-marca);
+  }
+
+  .sidebar-nav li.logout-item {
+    margin-left: auto;
+  }
+
+  .sidebar-nav li.logout-item a {
+    background-color: #888a89;
+    color: white;
+    border-color: #dcb035;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  /* Ocultar botón de cerrar sesión en móviles */
+  .desktop-only {
+    display: none;
+  }
+ 
+}
+
+/* iPhone SE y pantallas muy pequeñas (375px) */
+@media (max-width: 375px) {
+  .panel-dashboard-wrapper {
+    padding: 10px 15px;
+  }
+
+  .panel-sidebar {
+    padding: 8px 0;
+  }
+
+  .sidebar-nav ul {
+    padding: 8px 0;
+    gap: 3px;
+  }
+
+  .sidebar-nav li a {
+    padding: 6px 10px;
+    font-size: 10px;
+    border-radius: 15px;
+  }
+
+  .sidebar-nav li.logout-item a {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .panel-content {
+    padding: 10px;
+  }
 }
