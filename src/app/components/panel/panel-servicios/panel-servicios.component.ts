@@ -120,13 +120,28 @@ export class PanelServiciosComponent implements OnInit {
   }
 
   confirmarEliminarServicio() {
-    if (this.serviceToDelete) {
+    if (this.serviceToDelete && this.professionalId) {
+      console.log('Eliminando servicio:', {
+        professionalId: this.professionalId,
+        serviceId: this.serviceToDelete.id,
+        serviceName: this.serviceToDelete.name
+      });
+      
       this.serviciosService.deleteService(this.professionalId, this.serviceToDelete.id)
         .subscribe({
-          next: () => this.cargarServicios(this.professionalId),
-          error: (err) => console.error('Error al eliminar servicio:', err)
+          next: (response) => {
+            console.log('Servicio eliminado exitosamente:', response);
+            this.cargarServicios(this.professionalId);
+            this.cerrarConfirmDelete();
+          },
+          error: (err) => {
+            console.error('Error al eliminar servicio:', err);
+            // Opcional: mostrar mensaje de error al usuario
+            alert('Error al eliminar el servicio. Inténtalo de nuevo.');
+          }
         });
-      this.cerrarConfirmDelete();
+    } else {
+      console.error('No se puede eliminar: falta professionalId o serviceToDelete');
     }
   }
 }
