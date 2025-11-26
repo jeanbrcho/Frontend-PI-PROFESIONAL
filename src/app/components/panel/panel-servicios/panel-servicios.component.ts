@@ -19,7 +19,7 @@ export class PanelServiciosComponent implements OnInit {
   // Modal principal
   modalVisible = false;
   editingService: any = null;
-  modalService = { name: '', description: '', price: 0 };
+  modalService = { name: '', description: '', price:0};
 
   // Modal de confirmación de eliminación
   confirmDeleteModalVisible = false;
