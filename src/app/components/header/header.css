@@ -236,7 +236,7 @@
 }
 
 /* Móviles */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .logo-section {
     display: none;
   }

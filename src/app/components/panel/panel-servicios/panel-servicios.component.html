@@ -23,7 +23,7 @@
         <tr *ngFor="let service of servicios">
           <td>{{ service.name }}</td>
           <td>{{ service.description }}</td>
-          <td>{{ service.price }}</td>
+          <td>${{ service.price }}</td>
           <td>
             <button (click)="abrirModal(service)" class="btn-action btn-confirmar">Editar</button>
           </td>
@@ -43,10 +43,10 @@
     <div class="service-card" *ngFor="let service of servicios">
       <h3>{{ service.name }}</h3>
       <p>{{ service.description }}</p>
-      <div class="price">$ {{ service.price }}</div>
+      <div class="price">${{ service.price }}</div>
       <div class="actions">
-        <button (click)="abrirModal(service)" class="btn-action btn-confirmar">✏️ Editar</button>
-        <button (click)="abrirConfirmDelete(service)" class="btn-action btn-cancelar">🗑️ Eliminar</button>
+        <button (click)="abrirModal(service)" class="btn-action btn-confirmar"> Editar</button>
+        <button (click)="abrirConfirmDelete(service)" class="btn-action btn-cancelar"> Eliminar</button>
       </div>
     </div>
     <div *ngIf="servicios.length === 0" class="no-data">

@@ -36,7 +36,7 @@
                         </span>
                     </td>
                     <td>
-                        <button 
+                        <button class="cancelarTurno"
                             *ngIf="turno.estado !== 'Cancelado'"
                             (click)="cancelarTurno(turno.id)"
                             class="btn-action btn-cancelar-turno"
