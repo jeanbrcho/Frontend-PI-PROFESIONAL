@@ -305,3 +305,191 @@ tbody td {
     font-size: 0.9rem;
   }
 }
+
+/* ================================
+   Alerta personalizada
+   ================================ */
+.success-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.alert-content {
+  background-color: #d4edda;
+  border: 2px solid #155724;
+  color: #155724;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 350px;
+  width: 90%;
+  position: relative;
+  animation: popUp 0.4s ease-in-out;
+}
+
+.alert-content.error-alert {
+  background-color: #f8d7da;
+  border-color: #721c24;
+  color: #721c24;
+}
+
+.alert-content.confirm-modal {
+  background-color: #fff3cd;
+  border-color: #856404;
+  color: #856404;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+}
+
+.alert-content h2 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  color: inherit;
+}
+
+.alert-content p {
+  font-size: 1rem;
+  margin: 1rem 0;
+  line-height: 1.4;
+}
+
+.alert-button {
+  background-color: #155724;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
+}
+
+.alert-content.error-alert .alert-button {
+  background-color: #721c24;
+}
+
+.alert-content.confirm-modal .alert-button {
+  background-color: #856404;
+}
+
+.cancel-btn {
+  background-color: #6c757d !important;
+}
+
+.confirm-btn {
+  background-color: #dc3545 !important;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.alert-button:hover {
+  transform: translateY(-2px);
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268 !important;
+}
+
+.confirm-btn:hover {
+  background-color: #c82333 !important;
+}
+
+.alert-content.error-alert .alert-button:hover {
+  background-color: #5a161d;
+}
+
+.alert-content:not(.error-alert):not(.confirm-modal) .alert-button:hover {
+  background-color: #0f4419;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .alert-content {
+    max-width: 300px;
+    padding: 1.5rem;
+  }
+  
+  .alert-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .alert-content p {
+    font-size: 0.9rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .alert-button {
+    width: 100%;
+    margin: 0.3rem 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .alert-content {
+    max-width: 280px;
+    padding: 1.2rem;
+  }
+  
+  .alert-content h2 {
+    font-size: 1.2rem;
+  }
+  
+  .alert-content p {
+    font-size: 0.85rem;
+  }
+  
+  .alert-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
