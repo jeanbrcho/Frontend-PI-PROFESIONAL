@@ -25,11 +25,11 @@ export class ShiftsService {
   }
 
   /**
-   * Cancela un turno del profesional
+   * Elimina un turno del profesional
    * @param professionalId id del profesional
-   * @param shiftId id del turno a cancelar
+   * @param shiftId id del turno a eliminar
    */
-  cancelShift(professionalId: string, shiftId: string): Observable<any> {
+  deleteShift(professionalId: string, shiftId: string): Observable<any> {
     const token = localStorage.getItem('auth_token');
     return this.http.delete(`${API_BASE}/shifts/${shiftId}`, {
       headers: {
