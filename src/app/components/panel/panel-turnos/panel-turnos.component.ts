@@ -80,7 +80,7 @@ export class PanelTurnosComponent implements OnInit {
     if (turnoACancelar && turnoACancelar.estado !== 'Cancelado') {
       if (confirm(`¿Estás seguro de cancelar el turno de ${turnoACancelar.cliente} (${this.datePipe.transform(turnoACancelar.fecha, 'dd/MM HH:mm')})?`)) {
         
-        this.shiftsService.cancelShift(this.professionalId, String(id)).subscribe({
+        this.shiftsService.deleteShift(this.professionalId, String(id)).subscribe({
           next: () => {
             // Actualizar estado en UI
             turnoACancelar.estado = 'Cancelado';
