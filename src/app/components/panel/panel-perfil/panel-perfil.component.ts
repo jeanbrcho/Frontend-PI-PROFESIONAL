@@ -24,7 +24,12 @@ export class PanelPerfilComponent implements OnInit {
   
   isSaving: boolean = false; // Controla el estado del botón "Guardar"
   // 🔑 ESTADO: Aquí se guarda el mensaje de éxito o error para mostrarlo en el HTML
-  message: string | null = null; 
+  message: string | null = null;
+  
+  // Alerta personalizada
+  showAlert = false;
+  alertMessage = '';
+  alertType: 'success' | 'error' = 'success'; 
 
 
   
@@ -71,7 +76,7 @@ guardarCambios(): void {
 
     // Verificación de seguridad: necesitamos el ID para saber qué registro actualizar
     if (!this.profesionalDataDraft.id) {
-        this.message = 'Error: Falta el ID del profesional para actualizar.';
+        this.showCustomAlert('Error: Falta el ID del profesional para actualizar.', 'error');
         this.isSaving = false;
         return;
     }
@@ -89,7 +94,7 @@ guardarCambios(): void {
             
             this.isSaving = false;
             this.isEditing = false; // Salir del modo edición
-            this.message = '¡Perfil actualizado con éxito!'; // Mensaje de éxito
+            this.showCustomAlert('¡Perfil actualizado con éxito!', 'success');
         },
         
         error: (err: HttpErrorResponse) => {
@@ -104,8 +109,19 @@ guardarCambios(): void {
             }
             
             this.isSaving = false;
-            this.message = `ERROR (${err.status}): ${errorText}`;
+            this.showCustomAlert(`ERROR (${err.status}): ${errorText}`, 'error');
         }
     });
+  }
+
+  showCustomAlert(message: string, type: 'success' | 'error') {
+    this.alertMessage = message;
+    this.alertType = type;
+    this.showAlert = true;
+  }
+
+  closeAlert() {
+    this.showAlert = false;
+    this.alertMessage = '';
   }
 }

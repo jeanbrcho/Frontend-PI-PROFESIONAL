@@ -25,6 +25,11 @@ export class PanelServiciosComponent implements OnInit {
   confirmDeleteModalVisible = false;
   serviceToDelete: any = null;
 
+  // Alerta personalizada
+  showAlert = false;
+  alertMessage = '';
+  alertType: 'success' | 'error' = 'success';
+
   private checkIdSubscription: Subscription | null = null;
 
   constructor(private serviciosService: ServiciosService) {}
@@ -89,8 +94,14 @@ export class PanelServiciosComponent implements OnInit {
       // Editar servicio existente
       this.serviciosService.updateService(this.professionalId, this.editingService.id, this.modalService)
         .subscribe({
-          next: () => this.cargarServicios(this.professionalId),
-          error: (err) => console.error('Error al actualizar servicio:', err)
+          next: () => {
+            this.cargarServicios(this.professionalId);
+            this.showCustomAlert('Servicio actualizado exitosamente', 'success');
+          },
+          error: (err) => {
+            console.error('Error al actualizar servicio:', err);
+            this.showCustomAlert('Error al actualizar el servicio', 'error');
+          }
         });
     } else {
       // Crear nuevo servicio
@@ -100,8 +111,14 @@ export class PanelServiciosComponent implements OnInit {
       };
       console.log(dataService);
       this.serviciosService.createService(dataService).subscribe({
-        next: () => this.cargarServicios(this.professionalId),
-        error: (err) => console.error('Error al crear servicio:', err)
+        next: () => {
+          this.cargarServicios(this.professionalId);
+          this.showCustomAlert('Servicio creado exitosamente', 'success');
+        },
+        error: (err) => {
+          console.error('Error al crear servicio:', err);
+          this.showCustomAlert('Error al crear el servicio', 'error');
+        }
       });
     }
 
@@ -133,15 +150,26 @@ export class PanelServiciosComponent implements OnInit {
             console.log('Servicio eliminado exitosamente:', response);
             this.cargarServicios(this.professionalId);
             this.cerrarConfirmDelete();
+            this.showCustomAlert('Servicio eliminado exitosamente', 'success');
           },
           error: (err) => {
             console.error('Error al eliminar servicio:', err);
-            // Opcional: mostrar mensaje de error al usuario
-            alert('Error al eliminar el servicio. Inténtalo de nuevo.');
+            this.showCustomAlert('Error al eliminar el servicio. Inténtalo de nuevo.', 'error');
           }
         });
     } else {
       console.error('No se puede eliminar: falta professionalId o serviceToDelete');
     }
+  }
+
+  showCustomAlert(message: string, type: 'success' | 'error') {
+    this.alertMessage = message;
+    this.alertType = type;
+    this.showAlert = true;
+  }
+
+  closeAlert() {
+    this.showAlert = false;
+    this.alertMessage = '';
   }
 }

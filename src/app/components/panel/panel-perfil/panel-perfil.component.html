@@ -234,4 +234,15 @@
 
         
     </div>
+
+    <!-- Alerta personalizada -->
+    <div *ngIf="showAlert" class="success-alert">
+        <div class="alert-content" [class.error-alert]="alertType === 'error'">
+            <button class="close-btn" (click)="closeAlert()">×</button>
+            <h2 *ngIf="alertType === 'success'">¡Éxito! ✓</h2>
+            <h2 *ngIf="alertType === 'error'">¡Error! ⚠</h2>
+            <p>{{ alertMessage }}</p>
+            <button (click)="closeAlert()" class="alert-button">Aceptar</button>
+        </div>
+    </div>
 </div>
