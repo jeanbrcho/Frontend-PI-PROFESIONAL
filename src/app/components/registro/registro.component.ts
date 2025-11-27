@@ -16,6 +16,7 @@ export class RegistroComponent {
   form!: FormGroup; // 🔹 Se declara, pero no se inicializa aún
   specialties = ['Veterinaria', 'Peluqueria', 'veterinario y peluqueria'];
   isLoading = false;
+  showAlert = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router,) {
     this.form = this.fb.group({
@@ -96,8 +97,7 @@ export class RegistroComponent {
     this.authService.register(payload).subscribe({
       next: (res) => {
         // console.log(res)
-        alert('Registro exitoso , espere el correo electronio a su email');
-        this.router.navigate(['/'])
+        this.showAlert = true;
       },
       error: (err) => {
         const { error } = err
@@ -127,6 +127,14 @@ export class RegistroComponent {
     if (!/^[0-9]$/.test(char)) {
       event.preventDefault();
     }
+  }
+
+  closeAlert() {
+    this.showAlert = false;
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
   }
 
 }

@@ -29,6 +29,16 @@ export class PanelTurnosComponent implements OnInit {
   turnos: Turno[] = [];
   professionalId: string | null = null;
 
+  // Alerta personalizada
+  showAlert = false;
+  alertMessage = '';
+  alertType: 'success' | 'error' = 'success';
+
+  // Modal de confirmación personalizado
+  showConfirmModal = false;
+  confirmMessage = '';
+  turnoToCancel: Turno | null = null;
+
   // Nuevo constructor usando ShiftsService
   constructor(private datePipe: DatePipe, private shiftsService: ShiftsService) { }
 
@@ -78,20 +88,9 @@ export class PanelTurnosComponent implements OnInit {
     }
 
     if (turnoACancelar && turnoACancelar.estado !== 'Cancelado') {
-      if (confirm(`¿Estás seguro de cancelar el turno de ${turnoACancelar.cliente} (${this.datePipe.transform(turnoACancelar.fecha, 'dd/MM HH:mm')})?`)) {
-        
-        this.shiftsService.deleteShift(this.professionalId, String(id)).subscribe({
-          next: () => {
-            // Actualizar estado en UI
-            turnoACancelar.estado = 'Cancelado';
-            console.log(`Turno ${id} cancelado en backend.`);
-          },
-          error: (err: any) => {
-            console.error('Error cancelando turno', err);
-            alert('No se pudo cancelar el turno. Intenta nuevamente.');
-          }
-        });
-      }
+      this.turnoToCancel = turnoACancelar;
+      this.confirmMessage = `¿Estás seguro de cancelar el turno de ${turnoACancelar.cliente} (${this.datePipe.transform(turnoACancelar.fecha, 'dd/MM HH:mm')})?`;
+      this.showConfirmModal = true;
     }
   }
 
@@ -105,5 +104,42 @@ export class PanelTurnosComponent implements OnInit {
       default:
         return '';
     }
+  }
+
+  confirmCancelTurno() {
+    if (!this.turnoToCancel || !this.professionalId) return;
+
+    this.shiftsService.deleteShift(this.professionalId, String(this.turnoToCancel.id)).subscribe({
+      next: () => {
+        if (this.turnoToCancel) {
+          this.turnoToCancel.estado = 'Cancelado';
+          console.log(`Turno ${this.turnoToCancel.id} cancelado en backend.`);
+          this.showCustomAlert('Turno cancelado exitosamente', 'success');
+        }
+        this.closeConfirmModal();
+      },
+      error: (err: any) => {
+        console.error('Error cancelando turno', err);
+        this.showCustomAlert('No se pudo cancelar el turno. Intenta nuevamente.', 'error');
+        this.closeConfirmModal();
+      }
+    });
+  }
+
+  closeConfirmModal() {
+    this.showConfirmModal = false;
+    this.turnoToCancel = null;
+    this.confirmMessage = '';
+  }
+
+  showCustomAlert(message: string, type: 'success' | 'error') {
+    this.alertMessage = message;
+    this.alertType = type;
+    this.showAlert = true;
+  }
+
+  closeAlert() {
+    this.showAlert = false;
+    this.alertMessage = '';
   }
 }

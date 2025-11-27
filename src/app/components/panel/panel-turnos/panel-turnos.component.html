@@ -90,4 +90,28 @@
             <p>🎉 No tienes turnos agendados por el momento.</p>
         </div>
     </div>
+
+    <!-- Modal de confirmación personalizado -->
+    <div *ngIf="showConfirmModal" class="success-alert">
+        <div class="alert-content confirm-modal">
+            <button class="close-btn" (click)="closeConfirmModal()">×</button>
+            <h2>Confirmar Cancelación ⚠</h2>
+            <p>{{ confirmMessage }}</p>
+            <div class="modal-buttons">
+                <button (click)="closeConfirmModal()" class="alert-button cancel-btn">No, volver</button>
+                <button (click)="confirmCancelTurno()" class="alert-button confirm-btn">Sí, cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alerta personalizada -->
+    <div *ngIf="showAlert" class="success-alert">
+        <div class="alert-content" [class.error-alert]="alertType === 'error'">
+            <button class="close-btn" (click)="closeAlert()">×</button>
+            <h2 *ngIf="alertType === 'success'">¡Éxito! ✓</h2>
+            <h2 *ngIf="alertType === 'error'">¡Error! ⚠</h2>
+            <p>{{ alertMessage }}</p>
+            <button (click)="closeAlert()" class="alert-button">Aceptar</button>
+        </div>
+    </div>
 </div>

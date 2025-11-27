@@ -144,4 +144,14 @@
     </div>
     }
   </form>
+
+  <!-- Alerta flotante -->
+  <div *ngIf="showAlert" class="success-alert">
+    <div class="alert-content">
+      <button class="close-btn" (click)="closeAlert()">×</button>
+      <h2>¡Registro exitoso! 🐾</h2>
+      <p>Tu cuenta fue creada correctamente. Espera el correo electrónico en tu email.</p>
+      <button (click)="goToLogin()" class="alert-button login-btn">Iniciar sesión</button>
+    </div>
+  </div>
 </div>
